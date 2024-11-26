@@ -13,7 +13,7 @@ function BlogEditor({ blogPosts, updateBlogPost, createBlogPost }) {
     date: new Date().toISOString().split('T')[0],
     summary: "",
     content: "",
-    image: null
+    images: []
   });
 
   useEffect(() => {
@@ -24,10 +24,14 @@ function BlogEditor({ blogPosts, updateBlogPost, createBlogPost }) {
         date: new Date().toISOString().split('T')[0],
         summary: "Add your blog summary here...",
         content: "Add your blog content here...",
-        image: null
+        images: []
       });
     } else {
-      setPostData(blogPosts[id]);
+      const currentPost = blogPosts[id];
+      setPostData({
+        ...currentPost,
+        images: currentPost.image ? [currentPost.image] : []
+      });
     }
   }, [id, blogPosts, isNewPost]);
 
@@ -35,7 +39,8 @@ function BlogEditor({ blogPosts, updateBlogPost, createBlogPost }) {
     e.preventDefault();
     const updatedPost = {
       ...postData,
-      date: new Date().toISOString().split('T')[0], // Update date on save
+      date: new Date().toISOString().split('T')[0],
+      image: postData.images[0]
     };
     
     if (isNewPost) {
@@ -45,26 +50,26 @@ function BlogEditor({ blogPosts, updateBlogPost, createBlogPost }) {
     navigate(`/blog/${id}`);
   };
 
-  const handleCancel = () => {
-    if (isNewPost) {
-      navigate('/blog');
-    } else {
-      navigate(`/blog/${id}`);
-    }
+  const handleImageDelete = (index) => {
+    setPostData(prev => ({
+      ...prev,
+      images: prev.images.filter((_, i) => i !== index)
+    }));
   };
 
-  const handleImageUpload = (e) => {
-    const file = e.target.files[0];
-    if (file) {
+  const handleImageAdd = (e) => {
+    const files = Array.from(e.target.files);
+    
+    files.forEach(file => {
       const reader = new FileReader();
       reader.onloadend = () => {
         setPostData(prev => ({
           ...prev,
-          image: reader.result
+          images: [...prev.images, reader.result]
         }));
       };
       reader.readAsDataURL(file);
-    }
+    });
   };
 
   return (
@@ -80,7 +85,7 @@ function BlogEditor({ blogPosts, updateBlogPost, createBlogPost }) {
           </button>
           <button 
             className="cancel-button" 
-            onClick={handleCancel}
+            onClick={() => navigate('/blog')}
           >
             Cancel
           </button>
@@ -137,18 +142,31 @@ function BlogEditor({ blogPosts, updateBlogPost, createBlogPost }) {
         </div>
 
         <div className="form-group">
-          <label>Blog Image</label>
-          {postData.image && (
-            <div className="image-preview">
-              <img src={postData.image} alt="Blog preview" />
-            </div>
-          )}
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleImageUpload}
-            className="image-upload"
-          />
+          <label>Blog Images</label>
+          <div className="current-images">
+            {postData.images.map((image, index) => (
+              <div key={index} className="image-preview">
+                <img src={image} alt={`Blog ${index + 1}`} />
+                <button 
+                  type="button" 
+                  className="delete-image" 
+                  onClick={() => handleImageDelete(index)}
+                >
+                  ×
+                </button>
+              </div>
+            ))}
+          </div>
+          
+          <label>Add New Images</label>
+          <div className="image-upload">
+            <input
+              type="file"
+              accept="image/*"
+              multiple
+              onChange={handleImageAdd}
+            />
+          </div>
         </div>
 
         <div className="button-group">
