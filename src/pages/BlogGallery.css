@@ -1,3 +1,31 @@
+.gallery-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 0 20px;
+}
+
+.gallery-header h1 {
+  margin: 0;
+  color: #333;
+}
+
+.create-button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.create-button:hover {
+  background-color: #45a049;
+}
+
 .blog-container {
   padding: 20px;
   max-height: calc(100vh - 200px);

@@ -1,50 +1,37 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './ProjectGallery.css';
-import prayerHands from '../assets/prayerhands.jpg';
 
-function ProjectGallery() {
-  const projects = [
-    {
-      id: 1,
-      title: "Project One",
-      thumbnail: prayerHands
-    },
-    {
-      id: 2,
-      title: "Project Two",
-      thumbnail: prayerHands
-    },
-    {
-      id: 3,
-      title: "Project Three",
-      thumbnail: prayerHands
-    },
-    {
-      id: 4,
-      title: "Project Four",
-      thumbnail: prayerHands
-    },
-    {
-      id: 5,
-      title: "Project Five",
-      thumbnail: prayerHands
-    },
-    {
-      id: 6,
-      title: "Project Six",
-      thumbnail: prayerHands
-    }
-  ];
+function ProjectGallery({ projects, isSignedIn }) {
+  const navigate = useNavigate();
+
+  const handleCreateProject = () => {
+    // Get the next available ID
+    const nextId = Math.max(...Object.keys(projects).map(Number)) + 1;
+    navigate(`/project/${nextId}/edit`);
+  };
 
   return (
     <div className="project-gallery">
-      <h1>Project Gallery</h1>
+      <div className="gallery-header">
+        <h1>Project Gallery</h1>
+        {isSignedIn && (
+          <button 
+            className="create-project-button"
+            onClick={handleCreateProject}
+          >
+            + Create New Project
+          </button>
+        )}
+      </div>
       <div className="projects-grid">
-        {projects.map((project) => (
-          <Link to={`/project/${project.id}`} key={project.id} className="project-card">
+        {Object.entries(projects).map(([id, project]) => (
+          <Link to={`/project/${id}`} key={id} className="project-card">
             <div className="project-thumbnail">
-              <img src={project.thumbnail} alt={project.title} />
+              <img 
+                src={project.images[0]}
+                alt={project.title} 
+              />
             </div>
             <h3>{project.title}</h3>
           </Link>

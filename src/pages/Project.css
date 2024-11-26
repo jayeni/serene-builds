@@ -167,15 +167,34 @@
 }
 
 .edit-button {
-  background-color: #836953;
+  padding: 8px 16px;
+  background-color: #4CAF50;
   color: white;
   border: none;
-  padding: 8px 16px;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  font-size: 14px;
 }
 
 .edit-button:hover {
-  background-color: #6a553f;
+  background-color: #45a049;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.delete-button {
+  padding: 8px 16px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
 } 

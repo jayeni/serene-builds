@@ -1,28 +1,49 @@
 import React from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import './BlogPost.css';
-import prayerHands from '../assets/prayerhands.jpg';
 
-function BlogPost() {
+function BlogPost({ blogPosts, isSignedIn, deleteBlogPost }) {
   const { id } = useParams();
+  const navigate = useNavigate();
   
-  const post = {
-    id: 1,
-    title: "First Blog Post",
-    date: "March 20, 2024",
-    paragraphs: [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      "Third paragraph with more content about this topic. Adding details and information that would be relevant to the blog post."
-    ],
-    image: prayerHands
+  const post = blogPosts[id];
+
+  if (!post) {
+    navigate('/blog');
+    return null;
+  }
+
+  const handleDelete = () => {
+    if (window.confirm('Are you sure you want to delete this blog post?')) {
+      deleteBlogPost(id);
+      navigate('/blog');
+    }
   };
 
   return (
     <div className="blog-post-container">
-      <Link to="/blog" className="back-button">
-        <span className="arrow">←</span> Back to Blogs
-      </Link>
+      <div className="post-header">
+        <Link to="/blog" className="back-button">
+          <span className="arrow">←</span> Back to Blogs
+        </Link>
+        
+        {isSignedIn && (
+          <div className="action-buttons">
+            <button 
+              className="edit-button"
+              onClick={() => navigate(`/blog/${id}/edit`)}
+            >
+              Edit Post
+            </button>
+            <button 
+              className="delete-button"
+              onClick={handleDelete}
+            >
+              Delete Post
+            </button>
+          </div>
+        )}
+      </div>
       
       <h1>{post.title}</h1>
       <p className="post-date">{post.date}</p>
@@ -32,9 +53,9 @@ function BlogPost() {
       </div>
       
       <div className="post-content">
-        {post.paragraphs.map((paragraph, index) => (
-          <p key={index}>{paragraph}</p>
-        ))}
+        <p className="post-category">{post.category}</p>
+        <p className="post-summary">{post.summary}</p>
+        <div className="post-body">{post.content}</div>
       </div>
     </div>
   );

@@ -8,42 +8,9 @@ import 'swiper/css/pagination';
 import './Project.css';
 import prayerHands from '../assets/prayerhands.jpg';
 
-function Project() {
+function Project({ isSignedIn, projects, deleteProject }) {
   const { id } = useParams();
   const navigate = useNavigate();
-
-  const projects = {
-    1: {
-      title: "Project One",
-      description: "Detailed description of Project One...",
-      images: [prayerHands, prayerHands, prayerHands]
-    },
-    2: {
-      title: "Project Two",
-      description: "Detailed description of Project Two...",
-      images: [prayerHands, prayerHands, prayerHands]
-    },
-    3: {
-      title: "Project Three",
-      description: "Detailed description of Project Three...",
-      images: [prayerHands, prayerHands, prayerHands]
-    },
-    4: {
-      title: "Project Four",
-      description: "Detailed description of Project Four...",
-      images: [prayerHands, prayerHands, prayerHands]
-    },
-    5: {
-      title: "Project Five",
-      description: "Detailed description of Project Five...",
-      images: [prayerHands, prayerHands, prayerHands]
-    },
-    6: {
-      title: "Project Six",
-      description: "Detailed description of Project Six...",
-      images: [prayerHands, prayerHands, prayerHands]
-    }
-  };
 
   const project = projects[id];
 
@@ -51,11 +18,30 @@ function Project() {
     return navigate('/projects');
   }
 
+  const handleDelete = () => {
+    if (window.confirm('Are you sure you want to delete this project?')) {
+      deleteProject(id);
+      navigate('/projects');
+    }
+  };
+
   return (
     <div className="project-detail">
-      <button className="back-button" onClick={() => navigate('/projects')}>
-        ← Back to Projects
-      </button>
+      <div className="project-header">
+        <button className="back-button" onClick={() => navigate('/projects')}>
+          ← Back to Projects
+        </button>
+        {isSignedIn && (
+          <div className="action-buttons">
+            <button className="edit-button" onClick={() => navigate(`/project/${id}/edit`)}>
+              Edit Project
+            </button>
+            <button className="delete-button" onClick={handleDelete}>
+              Delete Project
+            </button>
+          </div>
+        )}
+      </div>
       
       <h1>{project.title}</h1>
       
