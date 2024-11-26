@@ -1,0 +1,181 @@
+.project-detail {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #06402b; /* Green background */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.back-button {
+  background: #836953;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background 0.3s ease;
+}
+
+.back-button:hover {
+  background: #6a553f;
+}
+
+.project-detail h1 {
+  color: #000080; /* Navy */
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+
+.project-content {
+  display: grid;
+  gap: 30px;
+}
+
+.project-content section {
+  margin-bottom: 30px;
+}
+
+.project-content h2 {
+  color: #000080; /* Navy */
+  margin-bottom: 15px;
+}
+
+.project-content p {
+  color: #000080; /* Navy */
+  line-height: 1.6;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tech-tag {
+  background: #836953;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 15px;
+  font-size: 0.9rem;
+}
+
+.project-features ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.project-features li {
+  color: #000080; /* Navy */
+  margin-bottom: 10px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+}
+
+.project-links {
+  display: flex;
+  gap: 20px;
+}
+
+.project-link {
+  background: #836953;
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.project-link:hover {
+  background: #6a553f;
+}
+
+@media (max-width: 768px) {
+  .project-detail {
+    padding: 15px;
+  }
+
+  .project-links {
+    flex-direction: column;
+  }
+}
+
+.project-image {
+  width: 100%;
+  margin-bottom: 30px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.project-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Swiper styles */
+.project-images {
+  width: 100%;
+  max-width: 600px; /* Limit maximum width */
+  margin: 0 auto 30px auto; /* Center the image container */
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.project-swiper {
+  width: 100%;
+  aspect-ratio: 1; /* Makes it square */
+}
+
+.project-swiper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Customize Swiper navigation buttons */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #836953 !important;
+  background: rgba(255, 255, 255, 0.8);
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50%;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 20px !important;
+}
+
+/* Customize pagination bullets */
+.swiper-pagination-bullet {
+  background: #836953 !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: #836953 !important;
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.edit-button {
+  background-color: #836953;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-button:hover {
+  background-color: #6a553f;
+} 

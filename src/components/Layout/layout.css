@@ -1,0 +1,204 @@
+/* Layout container */
+.layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* Main section: Side menu + Content body */
+  .main {
+    display: flex;
+    flex: 1; /* Takes up remaining space after header/footer */
+    overflow: hidden; /* Prevents content overflow issues */
+  }
+  
+  /* Header styles */
+  .header {
+    height: 60px;
+    background-color: #836953; /* Primary color */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header h1 {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+  
+  .header nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+  }
+  
+  .header nav a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Footer styles */
+  .footer {
+    height: 40px;
+    background-color: #836953; /* Primary color */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    margin-top: auto;
+    position: sticky;
+    bottom: 0;
+    z-index: 1000;
+  }
+  
+  /* Side menu styles */
+  .side-menu {
+    width: 250px;
+    background-color: #6d5d46;
+    transition: transform 0.3s ease;
+    position: relative;
+  }
+  
+  .side-menu.visible {
+    transform: translateX(0); /* Fully visible */
+  }
+  
+  .side-menu.hidden {
+    transform: translateX(-100%); /* Slide out of view */
+  }
+  
+  /* Menu list styles */
+  .side-menu ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    text-align: center; /* Center align the list */
+  }
+  
+  .side-menu ul li {
+    margin-bottom: 15px;
+  }
+  
+  .side-menu ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    display: block;
+    padding: 8px 0;
+    text-align: center; /* Ensure the links are centered */
+  }
+  
+  .side-menu ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Toggle button styles */
+  .toggle-button {
+    position: absolute;
+    right: -30px;
+    top: 10px;
+    background-color: #836953;
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .toggle-button:hover {
+    background-color: #6a553f; /* Darker shade for hover */
+  }
+  
+  .toggle-button.show,
+  .toggle-button.visible {
+    opacity: 1;
+  }
+  
+  /* Content body styles */
+  .content-body {
+    flex: 1;
+    padding: 20px;
+    background-color: black; /* Updated to bright orange-red */
+    overflow-y: auto;
+    box-sizing: border-box;
+    transition: margin-left 0.3s ease;
+  }
+  
+  .content-body.menu-visible {
+    margin-left: 0;
+  }
+  
+  .content-body.menu-hidden {
+    margin-left: -250px;
+  }
+  
+  .content-body h1,
+  .content-body p {
+    margin-bottom: 1rem;
+    color: white; /* Makes text readable on the bright background */
+  }
+  
+  .content-body h1 {
+    font-size: 2rem;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .main {
+      flex-direction: column; /* Stack side menu above content on small screens */
+    }
+  
+    .side-menu {
+      width: 100%; /* Full width for smaller screens */
+      padding: 10px;
+    }
+  
+    .content-body {
+      padding: 10px;
+    }
+  }
+  
+  /* Active link styles for header */
+  .header nav a.active {
+    color: #00FFE5;
+    font-weight: 500;
+    background-color: rgba(0, 255, 229, 0.1);
+    border-radius: 4px;
+  }
+  
+  /* Active link styles for side menu */
+  .side-menu a.active {
+    color: #00FFE5;
+    font-weight: 500;
+    background-color: rgba(0, 255, 229, 0.1);
+    border-radius: 4px;
+  }
+  
+  .sign-in-button {
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 15px;
+    transition: all 0.3s ease;
+  }
+  
+  .sign-in-button:hover {
+    background-color: white;
+    color: #836953;
+  }
+  
