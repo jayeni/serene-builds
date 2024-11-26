@@ -7,11 +7,14 @@ import Project from './pages/Project';
 import BlogPost from './pages/BlogPost';
 import Contact from './pages/Contact';
 import ReportBug from './pages/ReportBug';
+import { useState } from 'react';
 
 function App() {
+  const [isSignedIn, setIsSignedIn] = useState(false);
+
   return (
     <Router>
-      <Layout>
+      <Layout isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/projects" element={<ProjectGallery />} />
