@@ -47,8 +47,8 @@
 }
 
 .save-button {
-  background-color: #4CAF50;
-  color: white;
+  background-color: #efbf04;
+  color: #1b2452;
 }
 
 .cancel-button {
@@ -57,11 +57,11 @@
 }
 
 .save-button:hover {
-  background-color: #45a049;
+  background-color: #a38aa4;
 }
 
 .cancel-button:hover {
-  background-color: #da190b;
+  background-color: #a38aa4;
 }
 
 .current-images {
@@ -107,7 +107,7 @@
 }
 
 .delete-image:hover {
-  background-color: rgb(220, 53, 69);
+  background-color: #a38aa4;
 }
 
 .image-preview:hover::after {
@@ -139,8 +139,8 @@
 
 .edit-button {
   padding: 8px 16px;
-  background-color: #4CAF50;
-  color: white;
+  background-color: #efbf04;
+  color: #1b2452;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -148,7 +148,7 @@
 }
 
 .edit-button:hover {
-  background-color: #45a049;
+  background-color: #a38aa4;
 }
 
 .cancel-button {
@@ -162,5 +162,5 @@
 }
 
 .cancel-button:hover {
-  background-color: #c82333;
+  background-color: #a38aa4;
 } 

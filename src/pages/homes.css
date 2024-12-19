@@ -70,8 +70,8 @@
   
   /* Call-to-action button */
   .cta-button {
-    background: #836953;
-    color: white;
+    background-color: #efbf04;
+    color: #1b2452;
     border: none;
     padding: 12px 24px;
     border-radius: 5px;
@@ -81,7 +81,7 @@
   }
   
   .cta-button:hover {
-    background: #6a553f;
+    background: #a38aa4;
   }
   
   /* Responsive design */

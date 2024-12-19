@@ -2,14 +2,14 @@
   padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
-  background-color: #06402b; /* Green background */
+  background-color: #1b2452; /* Green background */
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .back-button {
-  background: #836953;
-  color: white;
+  background-color: #efbf04;
+  color: #1b2452;
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
@@ -19,11 +19,11 @@
 }
 
 .back-button:hover {
-  background: #6a553f;
+  background: #a38aa4;
 }
 
 .project-detail h1 {
-  color: #000080; /* Navy */
+  color: #efbf04; /* Navy */
   font-size: 2.5rem;
   margin-bottom: 30px;
 }
@@ -38,12 +38,12 @@
 }
 
 .project-content h2 {
-  color: #000080; /* Navy */
+  color: #efbf04;
   margin-bottom: 15px;
 }
 
 .project-content p {
-  color: #000080; /* Navy */
+  color: #efbf04;
   line-height: 1.6;
 }
 
@@ -67,7 +67,7 @@
 }
 
 .project-features li {
-  color: #000080; /* Navy */
+  color: #efbf04; /* Navy */
   margin-bottom: 10px;
   padding: 10px;
   background: rgba(255, 255, 255, 0.5);
@@ -89,7 +89,7 @@
 }
 
 .project-link:hover {
-  background: #6a553f;
+  background: #a38aa4;
 }
 
 @media (max-width: 768px) {
@@ -168,8 +168,8 @@
 
 .edit-button {
   padding: 8px 16px;
-  background-color: #4CAF50;
-  color: white;
+  background-color: #efbf04;
+  color: #1b2452;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -177,7 +177,7 @@
 }
 
 .edit-button:hover {
-  background-color: #45a049;
+  background-color: #a38aa4;
 }
 
 .action-buttons {
@@ -187,8 +187,8 @@
 
 .delete-button {
   padding: 8px 16px;
-  background-color: #dc3545;
-  color: white;
+  background-color: #efbf04;
+  color: #1b2452;
   border: none;
   border-radius: 4px;
   cursor: pointer;

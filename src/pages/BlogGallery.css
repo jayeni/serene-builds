@@ -8,13 +8,13 @@
 
 .gallery-header h1 {
   margin: 0;
-  color: #333;
+  color: #efbf04;
 }
 
 .create-button {
   padding: 10px 20px;
-  background-color: #4CAF50;
-  color: white;
+  background-color: #efbf04;
+  color: #1b2452;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -23,7 +23,7 @@
 }
 
 .create-button:hover {
-  background-color: #45a049;
+  background-color: #a38aa4;
 }
 
 .blog-container {
@@ -111,8 +111,8 @@
 }
 
 .read-more:hover {
-  background-color: #bd6868; /* darker brown for hover */
-  color: #c6e0d9;
+  background-color: #a38aa4; 
+  color: #1b2452;
 }
 
 /* Responsive design */

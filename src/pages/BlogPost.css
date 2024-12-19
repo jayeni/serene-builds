@@ -13,8 +13,8 @@
 
 .back-button {
   padding: 8px 16px;
-  background-color: #666;
-  color: white;
+  background-color: #efbf04;
+  color: #1b2452;
   text-decoration: none;
   border-radius: 4px;
   display: inline-flex;
@@ -23,7 +23,7 @@
 }
 
 .back-button:hover {
-  background-color: #555;
+  background-color: #a38aa4;
 }
 
 .action-buttons {
@@ -33,8 +33,8 @@
 
 .edit-button {
   padding: 8px 16px;
-  background-color: #4CAF50;
-  color: white;
+  background-color: #efbf04;
+  color: #1b2452;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -52,20 +52,20 @@
 }
 
 .edit-button:hover {
-  background-color: #45a049;
+  background-color: #a38aa4;
 }
 
 .delete-button:hover {
-  background-color: #c82333;
+  background-color: #a38aa4;
 }
 
 h1 {
-  color: #333;
+  color: #efbf04;
   margin-bottom: 10px;
 }
 
 .post-date {
-  color: #666;
+  color: #efbf04;
   margin-bottom: 20px;
 }
 
@@ -87,7 +87,7 @@ h1 {
 }
 
 .post-content p {
-  color: #444;
+  color: #efbf04;;
   line-height: 1.8;
   margin-bottom: 20px;
   font-size: 1.1rem;
@@ -95,10 +95,24 @@ h1 {
 
 .post-description {
   font-size: 1.2rem;
-  color: #666;
+  color: #efbf04;
   font-style: italic;
   margin-bottom: 30px;
   padding-bottom: 20px;
   border-bottom: 1px solid #eee;
   line-height: 1.6;
 } 
+.post-body {
+  color: #efbf04;
+  
+}
+
+.post-category {
+  background-color: #efbf04 !important;
+  color: #1b2452 !important;
+  border-radius: 50px;
+  padding: 10px 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
