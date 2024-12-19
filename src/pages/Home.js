@@ -7,7 +7,6 @@ function Home() {
       <div className="home-content">
         <h1>Serene Builds</h1>
         <p className="intro-text">
-          Ẹ Kaabọ Gbogbo Yin. Orukọ mi ni Dayo. I'm a creative polymath. 
           This site showcases my progress on various projects I'm working on, 
           with the hope of inspiring you to pursue your own ideas that inspire others in return. Àláàfíà ni fún yín.
         </p>

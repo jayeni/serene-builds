@@ -10,7 +10,9 @@ function Header({ isSignedIn, setIsSignedIn }) {
 
   return (
     <header className="header">
-      <h1>Serene Build</h1>
+      <Link to="/" className="header-title">
+        <h1>Serene Build</h1>
+      </Link>
       <nav>
         <Link to="/" className={location.pathname === '/' ? 'active' : ''}>
           Home

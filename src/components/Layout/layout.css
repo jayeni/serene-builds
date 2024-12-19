@@ -15,8 +15,8 @@
   /* Header styles */
   .header {
     height: 60px;
-    background-color: #836953; /* Primary color */
-    color: white;
+    background-color: #1b2452; /* Primary color */
+    color: #efbf04;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -27,10 +27,12 @@
   .header h1 {
     font-size: 1.5rem;
     margin: 0;
+    color: #efbf04;
+    text-decoration: none; /* Ensure no underline */
   }
   
   .header nav a {
-    color: white;
+    color: #efbf04;
     text-decoration: none;
     margin: 0 15px;
   }
@@ -39,11 +41,16 @@
     text-decoration: underline;
   }
   
+  /* Ensure no underline for links in header */
+  .header a {
+    text-decoration: none; /* Added to remove underline from links */
+  }
+  
   /* Footer styles */
   .footer {
     height: 40px;
-    background-color: #836953; /* Primary color */
-    color: white;
+    background-color: #1b2452; /* Primary color */
+    color: #efbf04;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -59,7 +66,7 @@
   /* Side menu styles */
   .side-menu {
     width: 250px;
-    background-color: #6d5d46;
+    background-color: #1b2452;
     transition: transform 0.3s ease;
     position: relative;
   }
@@ -85,7 +92,7 @@
   }
   
   .side-menu ul li a {
-    color: white;
+    color: #efbf04;
     text-decoration: none;
     font-size: 1rem;
     display: block;
@@ -100,21 +107,23 @@
   /* Toggle button styles */
   .toggle-button {
     position: absolute;
-    right: -30px;
+    right: -25px;
     top: 10px;
-    background-color: #836953;
-    color: white;
+    background-color: #efbf04;
+    color: #1b2452;
     border: none;
     padding: 5px;
     cursor: pointer;
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 70px;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 1000;
     opacity: 0;
     transition: opacity 0.3s ease;
+    border-top-right-radius: 10px; /* Rounded right top corner */
+    border-bottom-right-radius: 10px; /* Rounded right bottom corner */
   }
   
   .toggle-button:hover {
@@ -130,7 +139,7 @@
   .content-body {
     flex: 1;
     padding: 20px;
-    background-color: black; /* Updated to bright orange-red */
+    background-color: #2B4063; 
     overflow-y: auto;
     box-sizing: border-box;
     transition: margin-left 0.3s ease;
@@ -147,7 +156,7 @@
   .content-body h1,
   .content-body p {
     margin-bottom: 1rem;
-    color: white; /* Makes text readable on the bright background */
+    color: #efbf04; /* Makes text readable on the bright background */
   }
   
   .content-body h1 {
@@ -172,7 +181,7 @@
   
   /* Active link styles for header */
   .header nav a.active {
-    color: #00FFE5;
+    color: #efbf04;
     font-weight: 500;
     background-color: rgba(0, 255, 229, 0.1);
     border-radius: 4px;
@@ -180,7 +189,7 @@
   
   /* Active link styles for side menu */
   .side-menu a.active {
-    color: #00FFE5;
+    color: #efbf04;
     font-weight: 500;
     background-color: rgba(0, 255, 229, 0.1);
     border-radius: 4px;
@@ -189,7 +198,7 @@
   .sign-in-button {
     background-color: transparent;
     border: 1px solid white;
-    color: white;
+    color: #efbf04;
     padding: 5px 15px;
     border-radius: 4px;
     cursor: pointer;
@@ -199,6 +208,6 @@
   
   .sign-in-button:hover {
     background-color: white;
-    color: #836953;
+    color: #efbf04;
   }
   

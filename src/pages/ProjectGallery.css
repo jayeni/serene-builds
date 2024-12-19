@@ -17,16 +17,16 @@
 }
 
 .project-gallery::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #a38aa4;
 }
 
 .project-gallery::-webkit-scrollbar-thumb {
-  background: #836953;
+  background: #a38aa4;
   border-radius: 4px;
 }
 
 .project-gallery::-webkit-scrollbar-thumb:hover {
-  background: #6a553f;
+  background: #a38aa4;
 }
 
 /* Rest of your styles remain the same */
@@ -37,12 +37,13 @@
 }
 
 .project-card {
-  background: white;
+  background:#1b2452;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   transition: transform 0.3s ease;
-  border: 1px solid #836953;
+  border: 1px solid #efbf04;
+  text-decoration: none; 
 }
 
 .project-card:hover {
@@ -64,8 +65,9 @@
   padding: 15px;
   margin: 0;
   text-align: center;
-  background: #836953;
-  color: white;
+  color: #efbf04;
+  background-color: #1b2452;
+  text-decoration: none !important;
 }
 
 /* Responsive design */
@@ -90,8 +92,9 @@
 
 .create-project-button {
   padding: 10px 20px;
-  background-color: #4CAF50;
-  color: white;
+  background-color: #efbf04;
+  color: #1b2452;
+  border: none;
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -100,5 +103,5 @@
 }
 
 .create-project-button:hover {
-  background-color: #45a049;
+  background-color: #a38aa4;
 }

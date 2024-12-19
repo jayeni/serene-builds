@@ -42,7 +42,8 @@
 .blog-card {
   text-decoration: none;
   color: inherit;
-  background: #fff;
+  color: #efbf04;
+  background-color: #1b2452;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -71,8 +72,8 @@
 }
 
 .blog-category {
-  background: #836953;
-  color: white;
+  background-color: #efbf04; /* brown color */
+  color: #1b2452;
   padding: 4px 12px;
   border-radius: 15px;
   font-size: 0.8em;
@@ -83,25 +84,25 @@
 .blog-content h2 {
   margin: 10px 0;
   font-size: 1.4em;
-  color: #836953;
+  color: #efbf04;
 }
 
 .blog-date {
-  color: #666;
+  color: #efbf04;
   font-size: 0.9em;
   margin-bottom: 10px;
 }
 
 .blog-summary {
-  color: #555;
+  color: #929ba4;
   margin-bottom: 20px;
   line-height: 1.5;
 }
 
 .read-more {
   text-decoration: none;
-  background-color: #8B4513; /* brown color */
-  color: white;
+  background-color: #efbf04; /* brown color */
+  color: #1b2452;
   padding: 8px 16px;
   border-radius: 4px;
   display: inline-block;
@@ -110,8 +111,8 @@
 }
 
 .read-more:hover {
-  background-color: #6B3410; /* darker brown for hover */
-  color: white;
+  background-color: #bd6868; /* darker brown for hover */
+  color: #c6e0d9;
 }
 
 /* Responsive design */
