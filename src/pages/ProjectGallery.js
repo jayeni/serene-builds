@@ -9,6 +9,7 @@ function ProjectGallery({ projects, isSignedIn }) {
     // Get the next available ID
     const nextId = Math.max(...Object.keys(projects).map(Number)) + 1;
     navigate(`/project/${nextId}/edit`);
+    //hello
   };
 
   return (

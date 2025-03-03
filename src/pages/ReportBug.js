@@ -3,10 +3,11 @@ import './ReportBug.css';
 
 function ReportBug() {
   const [submitted, setSubmitted] = useState(false);
-  const email = "your.email@example.com"; // Replace with your actual email
+  const email = "your2.email@example.com"; // Replace with your actual email
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const formData = new FormData(e.target);
     const subject = "Bug Report: " + formData.get('title');
     const body = `Bug Description: ${formData.get('description')}\n\nSteps to Reproduce: ${formData.get('steps')}\n\nBrowser: ${formData.get('browser')}`;
