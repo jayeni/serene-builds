@@ -18,29 +18,12 @@ function Project({ isSignedIn, projects, deleteProject }) {
     return navigate('/projects');
   }
 
-  const handleDelete = () => {
-    if (window.confirm('Are you sure you want to delete this project?')) {
-      deleteProject(id);
-      navigate('/projects');
-    }
-  };
-
   return (
     <div className="project-detail">
       <div className="project-header">
         <button className="back-button" onClick={() => navigate('/projects')}>
           ← Back to Projects
         </button>
-        {isSignedIn && (
-          <div className="action-buttons">
-            <button className="edit-button" onClick={() => navigate(`/project/${id}/edit`)}>
-              Edit Project
-            </button>
-            <button className="delete-button" onClick={handleDelete}>
-              Delete Project
-            </button>
-          </div>
-        )}
       </div>
       
       <h1>{project.title}</h1>

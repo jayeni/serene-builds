@@ -31,9 +31,7 @@ function SideMenu({ isVisible, toggleMenu }) {
       <ul>
         <li><Link to="/" className={location.pathname === '/' ? 'active' : ''}>Home</Link></li>
         <li><Link to="/projects" className={location.pathname === '/projects' ? 'active' : ''}>Projects</Link></li>
-        <li><Link to="/blog" className={location.pathname === '/blog' ? 'active' : ''}>Blog</Link></li>
         <li><Link to="/report-bug" className={location.pathname === '/report-bug' ? 'active' : ''}>Report Bug</Link></li>
-        <li><Link to="/contact" className={location.pathname === '/contact' ? 'active' : ''}>Contact</Link></li>
       </ul>
     </aside>
   );
