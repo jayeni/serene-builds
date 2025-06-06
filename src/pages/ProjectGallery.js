@@ -5,25 +5,10 @@ import './ProjectGallery.css';
 function ProjectGallery({ projects, isSignedIn }) {
   const navigate = useNavigate();
 
-  const handleCreateProject = () => {
-    // Get the next available ID
-    const nextId = Math.max(...Object.keys(projects).map(Number)) + 1;
-    navigate(`/project/${nextId}/edit`);
-    //hello
-  };
-
   return (
     <div className="project-gallery">
       <div className="gallery-header">
-        <h1>Project Gallery</h1>
-        {isSignedIn && (
-          <button 
-            className="create-project-button"
-            onClick={handleCreateProject}
-          >
-            + Create New Project
-          </button>
-        )}
+        <h1>Projects</h1>
       </div>
       <div className="projects-grid">
         {Object.entries(projects).map(([id, project]) => (
