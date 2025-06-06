@@ -7,7 +7,7 @@ function Header({ isSignedIn, setIsSignedIn }) {
   return (
     <header className="header">
       <Link to="/" className="header-title">
-        <h1>Serene Build</h1>
+        <h1 className="combined-bubble-text" data-text="Serene Build">Serene Build</h1>
       </Link>
       <nav>
         <Link to="/" className={location.pathname === '/' ? 'active' : ''}>

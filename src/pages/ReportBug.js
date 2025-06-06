@@ -18,7 +18,7 @@ function ReportBug() {
 
   return (
     <div className="bug-report-container">
-      <h1>Report a Bug</h1>
+      <h1 className="combined-bubble-text" data-text="Report a Bug">Report a Bug</h1>
       {submitted ? (
         <div className="success-message">
           <p>Thank you for your report! Your email client should open shortly.</p>

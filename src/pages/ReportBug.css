@@ -1,3 +1,35 @@
+@font-face {
+    font-family: 'BubbleStreetFill';
+    src: url('../assets/BubbleStreetFill.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'BubbleStreetOutline';
+    src: url('../assets/BubbleStreetOutline.ttf') format('truetype');
+}
+
+/* Styles for combined bubble text */
+.combined-bubble-text {
+    position: relative;
+    display: inline-block;
+}
+
+.combined-bubble-text::before {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-family: 'BubbleStreetOutline', sans-serif;
+    color: #000000;  /* Black outline */
+    z-index: 1;
+}
+
+.combined-bubble-text {
+    font-family: 'BubbleStreetFill', sans-serif;
+    color: #1F3D0C;  /* Gold color */
+    z-index: 2;
+}
+
 .bug-report-container {
   max-width: 600px;
   margin: 0 auto;
@@ -6,12 +38,12 @@
 
 .bug-report-container h1 {
   text-align: center;
-  color: #efbf04;
+  color: #1F3D0C;
   margin-bottom: 30px;
 }
 
 .bug-report-form {
-  background: #1b2452;
+  background: #E56020;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -24,7 +56,7 @@
 .form-group label {
   display: block;
   margin-bottom: 8px;
-  color: #efbf04;
+  color: #1F3D0C;
   font-weight: 500;
 }
 
@@ -33,7 +65,7 @@
 .form-group select {
   width: 100%;
   padding: 8px 12px;
-  border: 1px solid #efbf04;
+  border: 1px solid #1F3D0C;
   border-radius: 4px;
   font-size: 1rem;
   box-sizing: border-box;

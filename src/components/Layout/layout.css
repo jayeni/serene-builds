@@ -1,3 +1,35 @@
+@font-face {
+  font-family: 'BubbleStreetFill';
+  src: url('../../assets/BubbleStreetFill.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'BubbleStreetOutline';
+  src: url('../../assets/BubbleStreetOutline.ttf') format('truetype');
+}
+
+/* Styles for combined bubble text */
+.combined-bubble-text {
+  position: relative;
+  display: inline-block;
+}
+
+.combined-bubble-text::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: 'BubbleStreetOutline', sans-serif;
+  color: #000000;  /* Black outline */
+  z-index: 1;
+}
+
+.combined-bubble-text {
+  font-family: 'BubbleStreetFill', sans-serif;
+  color: #1F3D0C;  /* Gold color for header */
+  z-index: 2;
+}
+
 /* Layout container */
 .layout {
     display: flex;
@@ -15,8 +47,8 @@
   /* Header styles */
   .header {
     height: 60px;
-    background-color: #1b2452; /* Primary color */
-    color: #efbf04;
+    background-color: #E56020; /* Primary color */
+    color: #1F3D0C;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -25,14 +57,14 @@
   }
   
   .header h1 {
-    font-size: 1.5rem;
     margin: 0;
-    color: #efbf04;
-    text-decoration: none; /* Ensure no underline */
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #1F3D0C;
   }
   
   .header nav a {
-    color: #efbf04;
+    color: #1F3D0C;
     text-decoration: none;
     margin: 0 15px;
   }
@@ -49,8 +81,8 @@
   /* Footer styles */
   .footer {
     height: 40px;
-    background-color: #1b2452; /* Primary color */
-    color: #efbf04;
+    background-color: #E56020; /* Primary color */
+    color: #1F3D0C;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -66,7 +98,7 @@
   /* Side menu styles */
   .side-menu {
     width: 250px;
-    background-color: #1b2452;
+    background-color: #E56020;
     transition: transform 0.3s ease;
     position: relative;
   }
@@ -92,7 +124,7 @@
   }
   
   .side-menu ul li a {
-    color: #efbf04;
+    color: #1F3D0C;
     text-decoration: none;
     font-size: 1rem;
     display: block;
@@ -109,8 +141,8 @@
     position: absolute;
     right: -25px;
     top: 10px;
-    background-color: #efbf04;
-    color: #1b2452;
+    background-color: #1F3D0C;
+    color: #E56020;
     border: none;
     padding: 5px;
     cursor: pointer;
@@ -139,7 +171,6 @@
   .content-body {
     flex: 1;
     padding: 20px;
-    background-color: #2B4063; 
     overflow-y: auto;
     box-sizing: border-box;
     transition: margin-left 0.3s ease;
@@ -156,7 +187,7 @@
   .content-body h1,
   .content-body p {
     margin-bottom: 1rem;
-    color: #efbf04; /* Makes text readable on the bright background */
+    color: #1F3D0C; /* Makes text readable on the bright background */
   }
   
   .content-body h1 {
@@ -181,7 +212,7 @@
   
   /* Active link styles for header */
   .header nav a.active {
-    color: #efbf04;
+    color: #50276E;
     font-weight: 500;
     background-color: rgba(0, 255, 229, 0.1);
     border-radius: 4px;
@@ -189,7 +220,7 @@
   
   /* Active link styles for side menu */
   .side-menu a.active {
-    color: #efbf04;
+    color: #50276E;
     font-weight: 500;
     background-color: rgba(0, 255, 229, 0.1);
     border-radius: 4px;
@@ -198,7 +229,7 @@
   .sign-in-button {
     background-color: transparent;
     border: 1px solid white;
-    color: #efbf04;
+    color: #1F3D0C;
     padding: 5px 15px;
     border-radius: 4px;
     cursor: pointer;
@@ -208,6 +239,6 @@
   
   .sign-in-button:hover {
     background-color: white;
-    color: #efbf04;
+    color: #1F3D0C;
   }
   

@@ -1,11 +1,12 @@
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
 import Home from './pages/Home';
 import ProjectGallery from './pages/ProjectGallery';
 import Project from './pages/Project';
 import ReportBug from './pages/ReportBug';
-import { useState } from 'react';
 import prayerHands from './assets/prayerhands.jpg';
+import bodyBackgroundImage from './assets/body-background.png';
 
 function App() {
   const [isSignedIn, setIsSignedIn] = useState(false);
@@ -24,6 +25,14 @@ function App() {
     },
     // ... other projects
   });
+
+  useEffect(() => {
+    document.body.style.backgroundImage = `url(${bodyBackgroundImage})`;
+    document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundPosition = 'center';
+    document.body.style.backgroundRepeat = 'no-repeat';
+    document.body.style.backgroundAttachment = 'fixed';
+  }, []);
 
   return (
     <Router>

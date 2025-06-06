@@ -8,7 +8,7 @@ function ProjectGallery({ projects, isSignedIn }) {
   return (
     <div className="project-gallery">
       <div className="gallery-header">
-        <h1>Projects</h1>
+        <h1 className="combined-bubble-text" data-text="Projects">Projects</h1>
       </div>
       <div className="projects-grid">
         {Object.entries(projects).map(([id, project]) => (

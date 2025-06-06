@@ -1,3 +1,35 @@
+@font-face {
+  font-family: 'BubbleStreetFill';
+  src: url('../assets/BubbleStreetFill.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'BubbleStreetOutline';
+  src: url('../assets/BubbleStreetOutline.ttf') format('truetype');
+}
+
+/* Styles for combined bubble text */
+.combined-bubble-text {
+  position: relative;
+  display: inline-block;
+}
+
+.combined-bubble-text::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: 'BubbleStreetOutline', sans-serif;
+  color: #000000;  /* Black outline */
+  z-index: 1;
+}
+
+.combined-bubble-text {
+  font-family: 'BubbleStreetFill', sans-serif;
+  color: #1F3D0C;  /* Gold color */
+  z-index: 2;
+}
+
 /* Root container for the Home page */
 .home {
     padding: 20px;
@@ -6,7 +38,7 @@
   .home-content {
     max-width: 800px;
     margin: 0 auto;
-    background-color: #1b2452; /* Light green */
+    background-color: #E56020; /* Light green */
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -14,7 +46,7 @@
   
   /* Make all paragraph text navy blue */
   .home-content p {
-    color: #efbf04; /* Navy blue */
+    color: #1F3D0C; /* Navy blue */
     font-size: 1.2rem;
     line-height: 1.6;
     margin-bottom: 20px;
@@ -24,14 +56,14 @@
   .home h1 {
     font-size: 2.5rem;
     margin-bottom: 20px;
-    color: #efbf04; /* Navy */
+    color: #1F3D0C; /* Navy */
   }
   
   .intro-text {
     font-size: 1.2rem;
     line-height: 1.6;
     margin-bottom: 30px;
-    color: #efbf04; /* Navy blue */
+    color: #1F3D0C; /* Navy blue */
     font-weight: 500; /* Make it slightly bolder */
   }
   
@@ -70,8 +102,8 @@
   
   /* Call-to-action button */
   .cta-button {
-    background-color: #efbf04;
-    color: #1b2452;
+    background-color: #1F3D0C;
+    color: #E56020;
     border: none;
     padding: 12px 24px;
     border-radius: 5px;
