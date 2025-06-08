@@ -1,244 +1,167 @@
 @font-face {
-  font-family: 'BubbleStreetFill';
-  src: url('../../assets/BubbleStreetFill.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'BubbleStreetOutline';
-  src: url('../../assets/BubbleStreetOutline.ttf') format('truetype');
-}
-
-/* Styles for combined bubble text */
-.combined-bubble-text {
-  position: relative;
-  display: inline-block;
-}
-
-.combined-bubble-text::before {
-  content: attr(data-text);
-  position: absolute;
-  left: 0;
-  top: 0;
-  font-family: 'BubbleStreetOutline', sans-serif;
-  color: #000000;  /* Black outline */
-  z-index: 1;
-}
-
-.combined-bubble-text {
-  font-family: 'BubbleStreetFill', sans-serif;
-  color: #1F3D0C;  /* Gold color for header */
-  z-index: 2;
-}
-
-/* Layout container */
-.layout {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    font-family: 'BubbleStreetFill';
+    src: url('../../assets/BubbleStreetFill.ttf') format('truetype');
   }
   
-  /* Main section: Side menu + Content body */
-  .main {
-    display: flex;
-    flex: 1; /* Takes up remaining space after header/footer */
-    overflow: hidden; /* Prevents content overflow issues */
+  @font-face {
+    font-family: 'BubbleStreetOutline';
+    src: url('../../assets/BubbleStreetOutline.ttf') format('truetype');
   }
   
-  /* Header styles */
-  .header {
-    height: 60px;
-    background-color: #E56020; /* Primary color */
-    color: #1F3D0C;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .header h1 {
-    margin: 0;
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #1F3D0C;
-  }
-  
-  .header nav a {
-    color: #1F3D0C;
-    text-decoration: none;
-    margin: 0 15px;
-  }
-  
-  .header nav a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Ensure no underline for links in header */
-  .header a {
-    text-decoration: none; /* Added to remove underline from links */
-  }
-  
-  /* Footer styles */
-  .footer {
-    height: 40px;
-    background-color: #E56020; /* Primary color */
-    color: #1F3D0C;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.9rem;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    margin-top: auto;
-    position: sticky;
-    bottom: 0;
-    z-index: 1000;
-  }
-  
-  /* Side menu styles */
-  .side-menu {
-    width: 250px;
-    background-color: #E56020;
-    transition: transform 0.3s ease;
+  /* Styles for combined bubble text */
+  .combined-bubble-text {
     position: relative;
+    display: inline-block;
   }
   
-  .side-menu.visible {
-    transform: translateX(0); /* Fully visible */
-  }
-  
-  .side-menu.hidden {
-    transform: translateX(-100%); /* Slide out of view */
-  }
-  
-  /* Menu list styles */
-  .side-menu ul {
-    list-style: none;
-    padding: 0;
-    margin-top: 20px;
-    text-align: center; /* Center align the list */
-  }
-  
-  .side-menu ul li {
-    margin-bottom: 15px;
-  }
-  
-  .side-menu ul li a {
-    color: #1F3D0C;
-    text-decoration: none;
-    font-size: 1rem;
-    display: block;
-    padding: 8px 0;
-    text-align: center; /* Ensure the links are centered */
-  }
-  
-  .side-menu ul li a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Toggle button styles */
-  .toggle-button {
+  .combined-bubble-text::before {
+    content: attr(data-text);
     position: absolute;
-    right: -25px;
-    top: 10px;
-    background-color: #1F3D0C;
-    color: #E56020;
-    border: none;
-    padding: 5px;
-    cursor: pointer;
-    width: 25px;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    border-top-right-radius: 10px; /* Rounded right top corner */
-    border-bottom-right-radius: 10px; /* Rounded right bottom corner */
+    left: 0;
+    top: 0;
+    font-family: 'BubbleStreetOutline', sans-serif;
+    color: #000000;  /* Black outline */
+    z-index: 1;
   }
   
-  .toggle-button:hover {
-    background-color: #6a553f; /* Darker shade for hover */
+  .combined-bubble-text {
+    font-family: 'BubbleStreetFill', sans-serif;
+    color: #1F3D0C;  /* Gold color for header */
+    z-index: 2;
   }
   
-  .toggle-button.show,
-  .toggle-button.visible {
-    opacity: 1;
-  }
-  
-  /* Content body styles */
-  .content-body {
-    flex: 1;
-    padding: 20px;
-    overflow-y: auto;
-    box-sizing: border-box;
-    transition: margin-left 0.3s ease;
-  }
-  
-  .content-body.menu-visible {
-    margin-left: 0;
-  }
-  
-  .content-body.menu-hidden {
-    margin-left: -250px;
-  }
-  
-  .content-body h1,
-  .content-body p {
-    margin-bottom: 1rem;
-    color: #1F3D0C; /* Makes text readable on the bright background */
-  }
-  
-  .content-body h1 {
-    font-size: 2rem;
-  }
-  
-  /* Responsive design */
-  @media (max-width: 768px) {
+  /* Layout container */
+  .layout {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    
+    /* Main section: Side menu + Content body */
     .main {
-      flex-direction: column; /* Stack side menu above content on small screens */
+      display: flex;
+      flex: 1; /* Takes up remaining space after header/footer */
+      overflow: hidden; /* Prevents content overflow issues */
     }
-  
-    .side-menu {
-      width: 100%; /* Full width for smaller screens */
-      padding: 10px;
+    
+    /* Header styles */
+    .header {
+      height: 60px;
+      background-color: #E56020; /* Primary color */
+      color: #1F3D0C;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 1002;
     }
-  
+    
+    .header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #1F3D0C;
+    }
+    
+    .header nav {
+      display: flex;
+    }
+    
+    .header nav a {
+      color: #1F3D0C;
+      text-decoration: none;
+      margin: 0 15px;
+    }
+    
+    .header nav a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Ensure no underline for links in header */
+    .header a {
+      text-decoration: none; /* Added to remove underline from links */
+    }
+    
+    /* Footer styles */
+    .footer {
+      height: 40px;
+      background-color: #E56020; /* Primary color */
+      color: #1F3D0C;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      margin-top: auto;
+      position: sticky;
+      bottom: 0;
+      z-index: 1000;
+    }
+    
+    /* Content body styles */
     .content-body {
-      padding: 10px;
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      box-sizing: border-box;
     }
-  }
-  
-  /* Active link styles for header */
-  .header nav a.active {
-    color: #50276E;
-    font-weight: 500;
-    background-color: rgba(0, 255, 229, 0.1);
-    border-radius: 4px;
-  }
-  
-  /* Active link styles for side menu */
-  .side-menu a.active {
-    color: #50276E;
-    font-weight: 500;
-    background-color: rgba(0, 255, 229, 0.1);
-    border-radius: 4px;
-  }
-  
-  .sign-in-button {
-    background-color: transparent;
-    border: 1px solid white;
-    color: #1F3D0C;
-    padding: 5px 15px;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-left: 15px;
-    transition: all 0.3s ease;
-  }
-  
-  .sign-in-button:hover {
-    background-color: white;
-    color: #1F3D0C;
-  }
-  
+    
+    .content-body h1,
+    .content-body p {
+      margin-bottom: 1rem;
+      color: #1F3D0C; /* Makes text readable on the bright background */
+    }
+    
+    .content-body h1 {
+      font-size: 2rem;
+    }
+    
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .header {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+      }
+    
+      .header .header-title {
+        margin-bottom: 10px;
+      }
+    
+      .header nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    
+      .header nav a {
+        margin: 5px 0;
+      }
+    }
+    
+    /* Active link styles for header */
+    .header nav a.active {
+      color: #50276E;
+      font-weight: 500;
+      background-color: rgba(0, 255, 229, 0.1);
+      border-radius: 4px;
+    }
+    
+    .sign-in-button {
+      background-color: transparent;
+      border: 1px solid white;
+      color: #1F3D0C;
+      padding: 5px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-left: 15px;
+      transition: all 0.3s ease;
+    }
+    
+    .sign-in-button:hover {
+      background-color: white;
+      color: #1F3D0C;
+    } 
