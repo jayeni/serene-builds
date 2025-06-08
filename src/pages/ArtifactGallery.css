@@ -1,0 +1,205 @@
+@font-face {
+    font-family: 'BubbleStreetFill';
+    src: url('../assets/BubbleStreetFill.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'BubbleStreetOutline';
+    src: url('../assets/BubbleStreetOutline.ttf') format('truetype');
+}
+
+/* Styles for combined bubble text */
+.combined-bubble-text {
+    position: relative;
+    display: inline-block;
+}
+
+.combined-bubble-text::before {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-family: 'BubbleStreetOutline', sans-serif;
+    color: #000000;  /* Black outline */
+    z-index: 1;
+}
+
+.combined-bubble-text {
+    font-family: 'BubbleStreetFill', sans-serif;
+    color: #1F3D0C;  /* Gold color */
+    z-index: 2;
+}
+
+.project-gallery {
+  padding: 20px;
+  max-height: calc(100vh - 200px); /* Adjust based on your header + footer height */
+  overflow-y: auto;
+  overflow-y: overlay; /* Shows scrollbar only when scrolling */
+}
+
+/* Hide scrollbar when not needed */
+.project-gallery::-webkit-scrollbar {
+  width: 8px;
+  display: none; /* Hidden by default */
+}
+
+/* Show scrollbar on hover */
+.project-gallery:hover::-webkit-scrollbar {
+  display: block;
+}
+
+.project-gallery::-webkit-scrollbar-track {
+  background: #a38aa4;
+}
+
+.project-gallery::-webkit-scrollbar-thumb {
+  background: #a38aa4;
+  border-radius: 4px;
+}
+
+.project-gallery::-webkit-scrollbar-thumb:hover {
+  background: #a38aa4;
+}
+
+/* Rest of your styles remain the same */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.project-card {
+  background:#E56020;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  border: 1px solid #1F3D0C;
+  text-decoration: none; 
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-thumbnail {
+  aspect-ratio: 1;
+  width: 100%;
+}
+
+.project-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-card h3 {
+  padding: 15px;
+  margin: 0;
+  text-align: center;
+  color: #1F3D0C;
+  background-color: #E56020;
+  text-decoration: none !important;
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.gallery-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.create-project-button {
+  padding: 10px 20px;
+  background-color: #1F3D0C;
+  color: #E56020;
+  border: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.2s;
+}
+
+.create-project-button:hover {
+  background-color: #a38aa4;}
+
+.artifact-gallery-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.gallery-title {
+  text-align: left;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.journey-tabs {
+  display: flex;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ccc;
+}
+
+.journey-tab {
+  padding: 10px 20px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-bottom: none;
+  background-color: #f0f0f0;
+  margin-right: 5px;
+  font-size: 1rem;
+  border-radius: 5px 5px 0 0;
+}
+
+.journey-tab.active {
+  background-color: #fff;
+  border-bottom: 2px solid #fff;
+  position: relative;
+  top: 2px;
+}
+
+.artifact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.artifact-card {
+  border: 1px solid #ccc;
+  padding: 15px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.artifact-placeholder {
+  background-color: #fff8dc;
+  border: 1px solid #ccc;
+  padding: 40px 20px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.artifact-placeholder span {
+  font-size: 1.2rem;
+}
+
+.artifact-note {
+  font-size: 0.9rem;
+  color: #666;
+}

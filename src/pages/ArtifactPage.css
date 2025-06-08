@@ -1,0 +1,61 @@
+.artifact-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.artifact-title-header {
+  background-color: #5a6e7e;
+  color: white;
+  padding: 15px;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.artifact-preview-container {
+  border: 1px solid #ccc;
+  padding: 80px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  color: #888;
+  border-radius: 5px;
+}
+
+.artifact-details {
+  margin-bottom: 20px;
+}
+
+.detail-row {
+  display: flex;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.detail-label {
+  font-weight: bold;
+  width: 100px;
+}
+
+.detail-value {
+  margin-left: 20px;
+}
+
+.artifact-notes-container {
+  margin-top: 30px;
+}
+
+.notes-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.notes-content {
+  border: 1px solid #ccc;
+  padding: 20px;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
