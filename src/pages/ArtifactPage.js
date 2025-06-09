@@ -2,12 +2,11 @@ import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './ArtifactPage.css';
 
-function ArtifactPage({ journeys }) {
-  const { journeyId, artifactId } = useParams();
+function ArtifactPage({ artifacts }) {
+  const { artifactId } = useParams();
   const navigate = useNavigate();
   
-  const journey = journeys[journeyId];
-  const artifact = journey ? journey.artifacts.find(a => a.id === parseInt(artifactId)) : null;
+  const artifact = artifacts.find(a => a.id === parseInt(artifactId));
 
   if (!artifact) {
     return <div>Artifact not found.</div>;
