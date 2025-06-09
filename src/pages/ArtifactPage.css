@@ -4,14 +4,26 @@
   padding: 20px;
 }
 
-.artifact-title-header {
-  background-color: #5a6e7e;
-  color: white;
-  padding: 15px;
-  font-size: 1.8rem;
+.back-button {
+  background: url('../assets/backbutton.png') no-repeat center center;
+  background-size: contain;
+  width: 80px;
+  height: 80px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  display: block;
   margin-bottom: 20px;
+}
+
+.back-button:hover {
+  transform: scale(1.1);
+}
+
+.artifact-title-header {
   text-align: center;
-  border-radius: 5px;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
 }
 
 .artifact-preview-container {
@@ -58,4 +70,11 @@
   font-size: 1.1rem;
   border-radius: 5px;
   background-color: #f9f9f9;
+}
+
+@media (max-width: 768px) {
+  .artifact-page .combined-bubble-text {
+    font-size: 1.4rem;
+    white-space: normal;
+  }
 }

@@ -20,7 +20,7 @@
     left: 0;
     top: 0;
     font-family: 'BubbleStreetOutline', sans-serif;
-    color: #000000;  /* Black outline */
+    color: #8479a1;  /* Black outline */
     z-index: 1;
   }
   
@@ -164,4 +164,11 @@
     .sign-in-button:hover {
       background-color: white;
       color: #1F3D0C;
-    } 
+    }
+
+@media (max-width: 768px) {
+  .combined-bubble-text {
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+} 

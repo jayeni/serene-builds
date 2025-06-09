@@ -20,7 +20,7 @@
     left: 0;
     top: 0;
     font-family: 'BubbleStreetOutline', sans-serif;
-    color: #000000;  /* Black outline */
+    color: #8479a1;  /* Black outline */
     z-index: 1;
 }
 
@@ -135,4 +135,12 @@
 }
 
 .create-project-button:hover {
-  background-color: #a38aa4;}
+  background-color: #a38aa4;
+}
+
+@media (max-width: 768px) {
+  .journey-gallery .combined-bubble-text {
+    font-size: 1.4rem;
+    white-space: normal;
+  }
+}

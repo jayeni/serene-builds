@@ -20,7 +20,7 @@
     left: 0;
     top: 0;
     font-family: 'BubbleStreetOutline', sans-serif;
-    color: #000000;  /* Black outline */
+    color: #8479a1;  /* Black outline */
     z-index: 1;
 }
 
@@ -137,41 +137,27 @@
 .create-project-button:hover {
   background-color: #a38aa4;}
 
+.back-button {
+  background: url('../assets/backbutton.png') no-repeat center center;
+  background-size: contain;
+  width: 80px;
+  height: 80px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.back-button:hover {
+  transform: scale(1.1);
+}
+
 .artifact-gallery-container {
   padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
-}
-
-.gallery-title {
-  text-align: left;
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-.journey-tabs {
-  display: flex;
-  margin-bottom: 20px;
-  border-bottom: 2px solid #ccc;
-}
-
-.journey-tab {
-  padding: 10px 20px;
-  cursor: pointer;
-  border: 1px solid #ccc;
-  border-bottom: none;
-  background-color: #f0f0f0;
-  margin-right: 5px;
-  font-size: 1rem;
-  border-radius: 5px 5px 0 0;
-}
-
-.journey-tab.active {
-  background-color: #fff;
-  border-bottom: 2px solid #fff;
-  position: relative;
-  top: 2px;
+  text-align: center;
 }
 
 .artifact-grid {
@@ -181,15 +167,19 @@
 }
 
 .artifact-card {
-  border: 1px solid #ccc;
+  border: none;
   padding: 15px;
   text-align: center;
   border-radius: 5px;
+  text-decoration: none;
+  color: inherit;
+  background-image: url('../assets/sandcolor.png');
+  background-color: transparent;
 }
 
 .artifact-placeholder {
-  background-color: #fff8dc;
-  border: 1px solid #ccc;
+  background-color: transparent;
+  border: none;
   padding: 40px 20px;
   margin-bottom: 10px;
   border-radius: 5px;
@@ -202,4 +192,11 @@
 .artifact-note {
   font-size: 0.9rem;
   color: #666;
+}
+
+@media (max-width: 768px) {
+  .artifact-gallery-container .combined-bubble-text {
+    font-size: 1.4rem;
+    white-space: normal;
+  }
 }
