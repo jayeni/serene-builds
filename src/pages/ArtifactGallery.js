@@ -65,8 +65,17 @@ function ArtifactGallery({ artifacts }) {
           artifacts.map(artifact => (
             <Link to={`/artifact/${artifact.id}`} key={artifact.id} className="artifact-card">
               <img src={artifact.previewImage} alt={artifact.title} className="artifact-preview-image" />
-              <h3>{artifact.title}</h3>
-              <p className="artifact-note">{artifact.description}</p>
+              <div className="artifact-content">
+                <h3>{artifact.title}</h3>
+                <p className="artifact-note">{artifact.description}</p>
+                {artifact.tags && (
+                  <div className="artifact-tags">
+                    {artifact.tags.map((tag) => (
+                      <span key={tag} className="artifact-tag">{tag}</span>
+                    ))}
+                  </div>
+                )}
+              </div>
             </Link>
           ))
         ) : (
