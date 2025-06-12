@@ -153,146 +153,245 @@
   transform: scale(1.1);
 }
 
-.artifact-gallery-container {
-  padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
+.gallery-page-wrapper {
+  padding-bottom: 40px;
   text-align: center;
 }
 
+.gallery-page-wrapper .combined-bubble-text {
+  display: inline-block;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.artifact-gallery-container {
+  background-image: url('../assets/purp-back.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: 16px;
+  padding: 24px;
+  max-width: 1200px;
+  margin: 40px auto;
+  box-shadow: 0 4px_12px rgba(0,0,0,0.05);
+  text-align: left;
+}
+
+/* --- Search and Filter --- */
+.search-and-filter-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.search-bar-wrapper {
+  position: relative;
+  flex-grow: 1;
+  min-width: 250px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #836953;
+  pointer-events: none;
+  width: 16px;
+  height: 16px;
+}
+
+.search-bar {
+  width: 100%;
+  padding: 12px 18px 12px 40px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #a38aa4;
+  background-color: #fff;
+  color: #1F3D0C;
+  box-sizing: border-box;
+}
+
+.filter-controls {
+  display: flex;
+  gap: 16px;
+}
+
+.filter-select {
+  padding: 12px 35px 12px 20px;
+  background-color: #fff;
+  color: #1F3D0C;
+  border-radius: 8px;
+  border: 1px solid #a38aa4;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%231F3D0C" viewBox="0 0 16 16"%3E%3Cpath fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/%3E%3C/svg%3E');
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 12px;
+}
+
+/* --- Artifact Grid and Cards --- */
 .artifact-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
+  gap: 24px;
 }
 
 .artifact-card {
-  border: none;
-  padding: 0;
-  text-align: center;
-  border-radius: 5px;
-  text-decoration: none;
-  color: inherit;
-  background-image: url('../assets/sandcolor.png');
+  position: relative;
   background-color: transparent;
+  border-radius: 8px;
+  border: none;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease;
+  z-index: 1;
+}
+
+.artifact-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('../assets/sandcolor.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+  z-index: -1;
+}
+
+.artifact-card:hover {
+  transform: translateY(-4px);
+  background-color: transparent;
+}
+
+.artifact-card:hover::before {
+  opacity: 0.9;
+}
+
+.artifact-image-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background-color: transparent;
+}
+.artifact-preview-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.play-icon-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.artifact-card:hover .play-icon-overlay {
+  opacity: 1;
+}
+.play-icon {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+.artifact-card-content {
+  padding: 16px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.artifact-card-content h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.1rem;
+  color: #1F3D0C;
+  font-family: sans-serif;
+}
+
+.artifact-note {
+  font-size: 0.9rem;
+  color: #836953;
+  line-height: 1.5;
+  flex-grow: 1;
+  margin: 0 0 16px 0;
+}
+
+.artifact-tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.artifact-type-tag, .artifact-tag {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #1F3D0C;
+  background-color: rgba(31, 61, 12, 0.1);
+  padding: 4px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.artifact-card-footer {
+  padding: 0 16px 16px;
+}
+
+.open-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  color: #1F3D0C;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+.open-link:hover {
+  color: #E56020;
+}
+
+.arrow-icon {
+  transition: transform 0.2s ease;
+}
+.open-link:hover .arrow-icon {
+  transform: translateX(4px);
 }
 
 .artifact-placeholder {
   display: none;
 }
 
-.artifact-preview-image {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-  display: block;
-}
-
-.artifact-content {
-  padding: 15px;
-}
-
-/* Ensure title doesn't add another background color after removing card padding */
-.artifact-content h3 {
-  margin-top: 0;
-}
-
 .artifact-placeholder span {
   font-size: 1.2rem;
-}
-
-.artifact-note {
-  font-size: 0.9rem;
-  color: #666;
-}
-
-.artifact-card h3 {
-  padding: 15px;
-  margin: 0;
-  text-align: center;
-  color: #1F3D0C;
-}
-
-/* Tag display inside artifact card */
-.artifact-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  justify-content: center;
-  margin-top: 10px;
-}
-
-.artifact-tag {
-  background-color: #1F3D0C;
-  color: #E56020;
-  padding: 4px 10px;
-  border-radius: 12px;
-  font-size: 0.75rem;
-  white-space: nowrap;
-}
-
-.search-and-filter-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 20px 0;
-  padding: 0 10px;
-  gap: 15px;
-}
-
-.search-bar {
-  flex-grow: 1;
-  padding: 12px 18px;
-  font-size: 1rem;
-  border-radius: 8px;
-  border: 1px solid #1F3D0C;
-  background-color: #fff8dc;
-  color: #1F3D0C;
-}
-
-.search-bar::placeholder {
-  color: #a38aa4;
-}
-
-.tag-input-wrapper {
-  display: flex;
-}
-
-.tag-input {
-  padding: 12px 18px;
-  font-size: 1rem;
-  border-radius: 8px 0 0 8px;
-  border: 1px solid #1F3D0C;
-  border-right: none;
-  background-color: #fff8dc;
-  color: #1F3D0C;
-  outline: none;
-}
-
-.add-tag-button {
-  padding: 12px 20px;
-  background-color: #1F3D0C;
-  color: #E56020;
-  border-radius: 0 8px 8px 0;
-  cursor: pointer;
-  font-weight: 500;
-  border: 1px solid #1F3D0C;
-  white-space: nowrap;
 }
 
 .selected-tags-area {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: 15px;
-  padding: 0 10px;
-  margin-bottom: 20px;
+  padding: 0;
+  margin-top: 16px;
+  margin-bottom: 16px;
 }
 
-.selected-tag {
+.selected-tag-pill {
   display: flex;
   align-items: center;
   background-color: #1F3D0C;
@@ -346,4 +445,39 @@
     font-size: 1.4rem;
     white-space: normal;
   }
+}
+
+/* --- New styles for Tag Filter Dropdown --- */
+.tag-filter-wrapper {
+  position: relative;
+}
+
+.tag-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #a38aa4;
+  border-radius: 8px;
+  padding: 8px;
+  margin-top: 4px;
+  z-index: 10;
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.tag-checkbox-label {
+  display: block;
+  padding: 8px 12px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.tag-checkbox-label:hover {
+  background-color: #f8f9fa;
+}
+
+.tag-checkbox-label input {
+  margin-right: 8px;
 }
