@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Layout from './components/Layout/Layout';
 import ArtifactGallery from './pages/ArtifactGallery';
 import ArtifactPage from './pages/ArtifactPage';
-import bodyBackgroundImage from './assets/body-background.png';
+import bodyBackgroundImage from './assets/green-back.png';
 import prayerHands from './assets/prayerhands.jpg';
 
 function App() {
@@ -16,6 +16,7 @@ function App() {
           description: "Early concept sketches for the logo and UI.",
           type: "image",
           journey: "3D",
+          project: "Project Phoenix",
           file_url: "/files/sketch1.png",
           tags: ["sketch", "ui", "concept"],
       created_at: "2025-05-01T10:30:00Z",
@@ -27,6 +28,7 @@ function App() {
           description: "The first iteration of the 3D artifact.",
           type: "3d_model",
           journey: "3D",
+          project: "Project Phoenix",
           file_url: "/models/mundial_v1.glb",
           tags: ["3d", "modeling"],
       created_at: "2025-05-03T11:00:00Z",
@@ -38,6 +40,7 @@ function App() {
           description: "A short video showcasing the project.",
           type: "video",
           journey: "Video",
+          project: "Project Gryphon",
           file_url: "/videos/promo1.mp4",
           tags: ["promo", "video"],
       created_at: "2025-05-05T16:00:00Z",
@@ -49,6 +52,7 @@ function App() {
           description: "Budget and spending for the Serene Build project.",
           type: "document",
           journey: "Profit",
+          project: "Internal",
           file_url: "/files/financial_plan.pdf",
           tags: ["finance", "budget"],
       created_at: "2025-04-15T09:00:00Z",

@@ -48,7 +48,9 @@
     /* Header styles */
     .header {
       height: 60px;
-      background-color: #E56020; /* Primary color */
+      background-image: url('../../assets/purp-back.png');
+      background-size: cover;
+      background-position: center;
       color: #1F3D0C;
       display: flex;
       align-items: center;
@@ -91,7 +93,9 @@
     /* Footer styles */
     .footer {
       height: 40px;
-      background-color: #E56020; /* Primary color */
+      background-image: url('../../assets/purp-back.png');
+      background-size: cover;
+      background-position: center;
       color: #1F3D0C;
       display: flex;
       align-items: center;

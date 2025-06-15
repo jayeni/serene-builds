@@ -4,16 +4,28 @@ import './ArtifactGallery.css';
 
 function ArtifactGallery({ artifacts }) {
   const [selectedTags, setSelectedTags] = useState([]);
+  const [selectedProjects, setSelectedProjects] = useState([]);
   const [isTagDropdownOpen, setTagDropdownOpen] = useState(false);
+  const [isProjectDropdownOpen, setProjectDropdownOpen] = useState(false);
+  
   const tagFilterRef = useRef(null);
+  const projectFilterRef = useRef(null);
 
-  // Get all unique tags from the artifacts
+  // Get all unique tags and projects from the artifacts
   const allTags = artifacts.flatMap(artifact => artifact.tags || []);
   const uniqueTags = [...new Set(allTags)].sort();
+  const allProjects = artifacts.map(artifact => artifact.project).filter(Boolean);
+  const uniqueProjects = [...new Set(allProjects)].sort();
 
   const handleTagToggle = (tag) => {
     setSelectedTags(prev =>
       prev.includes(tag) ? prev.filter(t => t !== tag) : [...prev, tag]
+    );
+  };
+
+  const handleProjectToggle = (project) => {
+    setSelectedProjects(prev =>
+      prev.includes(project) ? prev.filter(p => p !== project) : [...prev, project]
     );
   };
 
@@ -23,21 +35,21 @@ function ArtifactGallery({ artifacts }) {
       if (tagFilterRef.current && !tagFilterRef.current.contains(event.target)) {
         setTagDropdownOpen(false);
       }
+      if (projectFilterRef.current && !projectFilterRef.current.contains(event.target)) {
+        setProjectDropdownOpen(false);
+      }
     }
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [tagFilterRef]);
+  }, []);
 
-  // The actual filtering is not hooked up, as requested.
-  // To enable filtering, you would use this logic:
-  // const filteredArtifacts = selectedTags.length > 0
-  //   ? artifacts.filter(artifact =>
-  //       selectedTags.every(tag => artifact.tags && artifact.tags.includes(tag))
-  //     )
-  //   : artifacts;
-  const filteredArtifacts = artifacts;
+  const filteredArtifacts = artifacts.filter(artifact => {
+    const tagMatch = selectedTags.length === 0 || selectedTags.every(tag => artifact.tags?.includes(tag));
+    const projectMatch = selectedProjects.length === 0 || selectedProjects.includes(artifact.project);
+    return tagMatch && projectMatch;
+  });
 
   return (
     <div className="gallery-page-wrapper">
@@ -55,6 +67,25 @@ function ArtifactGallery({ artifacts }) {
           </div>
 
           <div className="filter-controls">
+            <div className="tag-filter-wrapper" ref={projectFilterRef}>
+              <button className="filter-select" onClick={() => setProjectDropdownOpen(!isProjectDropdownOpen)}>
+                Project Filter
+              </button>
+              {isProjectDropdownOpen && (
+                <div className="tag-dropdown">
+                  {uniqueProjects.map(project => (
+                    <label key={project} className="tag-checkbox-label">
+                      <input
+                        type="checkbox"
+                        checked={selectedProjects.includes(project)}
+                        onChange={() => handleProjectToggle(project)}
+                      />
+                      {project}
+                    </label>
+                  ))}
+                </div>
+              )}
+            </div>
             <div className="tag-filter-wrapper" ref={tagFilterRef}>
               <button className="filter-select" onClick={() => setTagDropdownOpen(!isTagDropdownOpen)}>
                 Tag Filter
@@ -84,8 +115,15 @@ function ArtifactGallery({ artifacts }) {
           </div>
         </div>
 
-        {selectedTags.length > 0 && (
-          <div className="selected-tags-area">
+        <div className="selected-tags-area">
+            {selectedProjects.map(project => (
+              <div key={project} className="selected-project-pill">
+                {project}
+                <button onClick={() => handleProjectToggle(project)} className="remove-tag-button">
+                  &times;
+                </button>
+              </div>
+            ))}
             {selectedTags.map(tag => (
               <div key={tag} className="selected-tag-pill">
                 {tag}
@@ -94,8 +132,7 @@ function ArtifactGallery({ artifacts }) {
                 </button>
               </div>
             ))}
-          </div>
-        )}
+        </div>
 
         <div className="artifact-grid">
           {filteredArtifacts.length > 0 ? (
