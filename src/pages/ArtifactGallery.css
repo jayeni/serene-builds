@@ -270,8 +270,19 @@
 .artifact-preview-image {
   width: 100%;
   height: 100%;
-  object-fit: fill; /* Stretch image so entire area is filled, even if aspect ratio changes */
-  object-position: center;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.artifact-preview-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e0e0e0;
+  color: #666;
+  font-weight: bold;
 }
 
 .play-icon-overlay {
@@ -283,6 +294,7 @@
   background-color: rgba(0, 0, 0, 0.3);
   opacity: 0;
   transition: opacity 0.2s ease;
+  pointer-events: none; /* Allow mouse events to pass through */
 }
 .artifact-card:hover .play-icon-overlay {
   opacity: 1;
@@ -324,7 +336,17 @@
   align-items: center;
 }
 
-.artifact-type-tag, .artifact-tag {
+.artifact-type-tag {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #155724; /* Dark Green */
+  background-color: #D4EDDA; /* Light Green */
+  padding: 4px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.artifact-tag {
   font-size: 0.8rem;
   font-weight: 500;
   color: #555;
@@ -332,6 +354,16 @@
   padding: 4px 10px;
   border-radius: 4px;
   white-space: nowrap;
+}
+
+.artifact-project-tag {
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  background-color: #E56020; /* Orange theme color */
+  color: #FEFDFB; /* Off-white for contrast */
 }
 
 .artifact-card-footer {
@@ -385,6 +417,16 @@
   font-size: 0.9rem;
 }
 
+.selected-type-pill {
+  display: flex;
+  align-items: center;
+  background-color: #D4EDDA; /* Light Green */
+  color: #155724; /* Dark Green */
+  border-radius: 15px;
+  padding: 5px 12px;
+  font-size: 0.9rem;
+}
+
 .remove-tag-button {
   background: none;
   border: none;
@@ -394,6 +436,10 @@
   font-size: 1.2rem;
   padding: 0;
   line-height: 1;
+}
+
+.selected-type-pill .remove-tag-button {
+  color: #155724; /* Match text color */
 }
 
 .selected-project-pill {
@@ -511,4 +557,8 @@
 
 .tag-checkbox-label input {
   margin-right: 8px;
+}
+
+.artifact-card:hover .artifact-preview-image {
+  transform: scale(1.05);
 }

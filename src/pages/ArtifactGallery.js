@@ -1,21 +1,45 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import './ArtifactGallery.css';
+import ModelViewer from '../components/ModelViewer';
 
 function ArtifactGallery({ artifacts }) {
   const [selectedTags, setSelectedTags] = useState([]);
   const [selectedProjects, setSelectedProjects] = useState([]);
+  const [selectedTypes, setSelectedTypes] = useState([]);
   const [isTagDropdownOpen, setTagDropdownOpen] = useState(false);
   const [isProjectDropdownOpen, setProjectDropdownOpen] = useState(false);
+  const [isTypeDropdownOpen, setTypeDropdownOpen] = useState(false);
   
+  const videoRefs = useRef({});
+
   const tagFilterRef = useRef(null);
   const projectFilterRef = useRef(null);
+  const typeFilterRef = useRef(null);
 
   // Get all unique tags and projects from the artifacts
   const allTags = artifacts.flatMap(artifact => artifact.tags || []);
   const uniqueTags = [...new Set(allTags)].sort();
   const allProjects = artifacts.map(artifact => artifact.project).filter(Boolean);
   const uniqueProjects = [...new Set(allProjects)].sort();
+  const allTypes = artifacts.map(artifact => artifact.type).filter(Boolean);
+  const uniqueTypes = [...new Set(allTypes)].sort();
+
+  const handleVideoHover = (videoId, play) => {
+    const video = videoRefs.current[videoId];
+    if (video) {
+      if (play) {
+        video.play().catch(error => {
+          // Autoplay was prevented. This is common in browsers.
+          // The video will play once the user interacts with the page.
+          console.error("Video play prevented:", error);
+        });
+      } else {
+        video.pause();
+        video.currentTime = 0;
+      }
+    }
+  };
 
   const handleTagToggle = (tag) => {
     setSelectedTags(prev =>
@@ -29,6 +53,12 @@ function ArtifactGallery({ artifacts }) {
     );
   };
 
+  const handleTypeToggle = (type) => {
+    setSelectedTypes(prev =>
+      prev.includes(type) ? prev.filter(t => t !== type) : [...prev, type]
+    );
+  };
+
   // Click outside handler
   useEffect(() => {
     function handleClickOutside(event) {
@@ -37,6 +67,9 @@ function ArtifactGallery({ artifacts }) {
       }
       if (projectFilterRef.current && !projectFilterRef.current.contains(event.target)) {
         setProjectDropdownOpen(false);
+      }
+      if (typeFilterRef.current && !typeFilterRef.current.contains(event.target)) {
+        setTypeDropdownOpen(false);
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
@@ -48,7 +81,8 @@ function ArtifactGallery({ artifacts }) {
   const filteredArtifacts = artifacts.filter(artifact => {
     const tagMatch = selectedTags.length === 0 || selectedTags.every(tag => artifact.tags?.includes(tag));
     const projectMatch = selectedProjects.length === 0 || selectedProjects.includes(artifact.project);
-    return tagMatch && projectMatch;
+    const typeMatch = selectedTypes.length === 0 || selectedTypes.includes(artifact.type);
+    return tagMatch && projectMatch && typeMatch;
   });
 
   return (
@@ -105,6 +139,25 @@ function ArtifactGallery({ artifacts }) {
                 </div>
               )}
             </div>
+            <div className="tag-filter-wrapper" ref={typeFilterRef}>
+              <button className="filter-select" onClick={() => setTypeDropdownOpen(!isTypeDropdownOpen)}>
+                Type Filter
+              </button>
+              {isTypeDropdownOpen && (
+                <div className="tag-dropdown">
+                  {uniqueTypes.map(type => (
+                    <label key={type} className="tag-checkbox-label">
+                      <input
+                        type="checkbox"
+                        checked={selectedTypes.includes(type)}
+                        onChange={() => handleTypeToggle(type)}
+                      />
+                      {type}
+                    </label>
+                  ))}
+                </div>
+              )}
+            </div>
             <div className="sort-by-wrapper">
               <select className="filter-select">
                 <option value="date-desc">Sort by Newest</option>
@@ -132,14 +185,41 @@ function ArtifactGallery({ artifacts }) {
                 </button>
               </div>
             ))}
+            {selectedTypes.map(type => (
+              <div key={type} className="selected-type-pill">
+                {type}
+                <button onClick={() => handleTypeToggle(type)} className="remove-tag-button">
+                  &times;
+                </button>
+              </div>
+            ))}
         </div>
 
         <div className="artifact-grid">
           {filteredArtifacts.length > 0 ? (
             filteredArtifacts.map(artifact => (
               <div key={artifact.id} className="artifact-card">
-                <div className="artifact-image-container">
-                  <img src={artifact.previewImage} alt={artifact.title} className="artifact-preview-image" />
+                <div 
+                  className="artifact-image-container"
+                  onMouseEnter={() => artifact.type === 'video' && handleVideoHover(artifact.id, true)}
+                  onMouseLeave={() => artifact.type === 'video' && handleVideoHover(artifact.id, false)}
+                >
+                  {artifact.type === 'video' ? (
+                    <video
+                      ref={el => videoRefs.current[artifact.id] = el}
+                      src={artifact.file_url}
+                      className="artifact-preview-image"
+                      preload="metadata"
+                      muted
+                      loop
+                    />
+                  ) : artifact.type === '3d' ? (
+                    <div className="artifact-preview-image">
+                        <ModelViewer objPath={artifact.obj_url} mtlPath={artifact.mtl_url} galleryPreview={true} />
+                    </div>
+                  ) : (
+                    <img src={artifact.previewImage} alt={artifact.title} className="artifact-preview-image" />
+                  )}
                   {['video', 'audio'].includes(artifact.type) && (
                     <div className="play-icon-overlay">
                       <div className="play-icon"></div>
@@ -150,6 +230,9 @@ function ArtifactGallery({ artifacts }) {
                   <h3>{artifact.title}</h3>
                   <p className="artifact-note">{artifact.description}</p>
                   <div className="artifact-tags-container">
+                    {artifact.project && (
+                      <span className="artifact-project-tag">{artifact.project}</span>
+                    )}
                     <span className="artifact-type-tag">{artifact.type}</span>
                     {artifact.tags && artifact.tags.map(tag => (
                       <span key={tag} className="artifact-tag">{tag}</span>
