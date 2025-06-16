@@ -28,6 +28,15 @@ function ArtifactPage({ artifacts }) {
         return <video src={version.file_url} controls className="artifact-video-preview" />;
       case '3d':
         return <ModelViewer objPath={version.obj_url} mtlPath={version.mtl_url} />;
+      case 'pdf':
+        return (
+            <iframe 
+                src={version.file_url} 
+                title={artifact.title} 
+                className="artifact-pdf-preview"
+                style={{ border: 'none' }}
+            ></iframe>
+        );
       default:
         return <p>Unsupported artifact type</p>;
     }
@@ -66,6 +75,16 @@ function ArtifactPage({ artifacts }) {
         <div className="detail-row">
           <span className="detail-label">Project:</span>
           <span className="detail-value">{artifact.project}</span>
+        </div>
+        <div className="detail-row">
+          <span className="detail-label">Tags:</span>
+          <div className="detail-value">
+            <div className="artifact-tags-container">
+              {artifact.tags && artifact.tags.map(tag => (
+                <span key={tag} className="artifact-tag">{tag}</span>
+              ))}
+            </div>
+          </div>
         </div>
         <div className="detail-row">
           <span className="detail-label">Created:</span>

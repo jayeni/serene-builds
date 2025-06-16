@@ -217,6 +217,13 @@ function ArtifactGallery({ artifacts }) {
                     <div className="artifact-preview-image">
                         <ModelViewer objPath={artifact.obj_url} mtlPath={artifact.mtl_url} galleryPreview={true} />
                     </div>
+                  ) : artifact.type === 'pdf' ? (
+                    <iframe 
+                      src={artifact.file_url} 
+                      title={artifact.title} 
+                      className="artifact-preview-image"
+                      style={{ border: 'none' }}
+                    ></iframe>
                   ) : (
                     <img src={artifact.previewImage} alt={artifact.title} className="artifact-preview-image" />
                   )}

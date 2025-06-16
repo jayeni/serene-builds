@@ -11,13 +11,18 @@ import pkObj from './assets/pk.obj';
 import pkMtl from './assets/pk.mtl';
 import pk4Obj from './assets/pk4.obj';
 import pk4Mtl from './assets/pk4.mtl';
+import iseDayoV1 from './assets/ise_dayo/Ise_Dayo_v1.pdf';
+import iseDayoV2 from './assets/ise_dayo/Ise_Dayo_v2.pdf';
+import iseDayoV3 from './assets/ise_dayo/Ise_Dayo_v3.pdf';
+import iseDayoV4 from './assets/ise_dayo/Ise_Dayo_v4.pdf';
+import iseDayoV5 from './assets/ise_dayo/Ise_Dayo_v5.pdf';
 
 const artifactsData = [
       {
         id: 102,
         title: "3D Rhino Design Video",
         type: "video",
-        project: "Serene build",
+        project: "Serene Build",
         tags: ["video", "graph", "preview"],
         versions: [
           {
@@ -54,6 +59,45 @@ const artifactsData = [
             obj_url: pkObj,
             mtl_url: pkMtl,
             created_at: "2025-05-05T10:00:00Z",
+          }
+        ]
+      },
+      {
+        id: 104,
+        title: "Ise Dayo Document",
+        type: "pdf",
+        project: "Ise Dayo",
+        tags: ["pdf", "document", "viewer"],
+        versions: [
+          {
+            version: "v1",
+            description: "Version 1 of Ise Dayo document.",
+            file_url: iseDayoV1,
+            created_at: "2025-05-06T10:00:00Z",
+          },
+          {
+            version: "v2",
+            description: "Version 2 of Ise Dayo document.",
+            file_url: iseDayoV2,
+            created_at: "2025-05-07T10:00:00Z",
+          },
+          {
+            version: "v3",
+            description: "Version 3 of Ise Dayo document.",
+            file_url: iseDayoV3,
+            created_at: "2025-05-08T10:00:00Z",
+          },
+          {
+            version: "v4",
+            description: "Version 4 of Ise Dayo document.",
+            file_url: iseDayoV4,
+            created_at: "2025-05-09T10:00:00Z",
+          },
+          {
+            version: "v5",
+            description: "Version 5 of Ise Dayo document.",
+            file_url: iseDayoV5,
+            created_at: "2025-05-10T10:00:00Z",
           }
         ]
       }
