@@ -562,3 +562,67 @@
 .artifact-card:hover .artifact-preview-image {
   transform: scale(1.05);
 }
+
+.add-artifact-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #000;
+  transition: all 0.2s ease;
+  margin-left: auto;
+}
+
+.add-artifact-button:hover {
+  background-color: #f0f0f0;
+  border-color: #555;
+}
+
+.add-artifact-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+/* Preview Arrow Styles */
+.artifact-image-container .preview-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.artifact-image-container:hover .preview-arrow {
+  opacity: 0.8;
+}
+
+.preview-arrow:hover {
+  opacity: 1;
+}
+
+.preview-arrow.left {
+  left: 10px;
+}
+
+.preview-arrow.right {
+  right: 10px;
+}

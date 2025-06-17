@@ -10,12 +10,33 @@ function ArtifactGallery({ artifacts }) {
   const [isTagDropdownOpen, setTagDropdownOpen] = useState(false);
   const [isProjectDropdownOpen, setProjectDropdownOpen] = useState(false);
   const [isTypeDropdownOpen, setTypeDropdownOpen] = useState(false);
+  const [previewImageIndexes, setPreviewImageIndexes] = useState({});
   
   const videoRefs = useRef({});
 
   const tagFilterRef = useRef(null);
   const projectFilterRef = useRef(null);
   const typeFilterRef = useRef(null);
+
+  const handlePreviousPreview = (e, artifact) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!artifact || !artifact.images) return;
+    setPreviewImageIndexes(prev => ({
+        ...prev,
+        [artifact.id]: (prev[artifact.id] || 0) === 0 ? artifact.images.length - 1 : (prev[artifact.id] || 0) - 1
+    }));
+  };
+
+  const handleNextPreview = (e, artifact) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!artifact || !artifact.images) return;
+    setPreviewImageIndexes(prev => ({
+        ...prev,
+        [artifact.id]: ((prev[artifact.id] || 0) + 1) % artifact.images.length
+    }));
+  };
 
   // Get all unique tags and projects from the artifacts
   const allTags = artifacts.flatMap(artifact => artifact.tags || []);
@@ -165,6 +186,10 @@ function ArtifactGallery({ artifacts }) {
                 <option value="alpha-asc">Sort by Name (A-Z)</option>
               </select>
             </div>
+            <button className="add-artifact-button">
+              <span className="add-artifact-icon">+</span>
+              Add Artifact
+            </button>
           </div>
         </div>
 
@@ -204,7 +229,17 @@ function ArtifactGallery({ artifacts }) {
                   onMouseEnter={() => artifact.type === 'video' && handleVideoHover(artifact.id, true)}
                   onMouseLeave={() => artifact.type === 'video' && handleVideoHover(artifact.id, false)}
                 >
-                  {artifact.type === 'video' ? (
+                  {artifact.type === 'image' && artifact.images && artifact.images.length > 1 ? (
+                    <>
+                      <img 
+                        src={artifact.images[previewImageIndexes[artifact.id] || 0]} 
+                        alt={artifact.title} 
+                        className="artifact-preview-image" 
+                      />
+                      <button onClick={(e) => handlePreviousPreview(e, artifact)} className="preview-arrow left">&#8249;</button>
+                      <button onClick={(e) => handleNextPreview(e, artifact)} className="preview-arrow right">&#8250;</button>
+                    </>
+                  ) : artifact.type === 'video' ? (
                     <video
                       ref={el => videoRefs.current[artifact.id] = el}
                       src={artifact.file_url}

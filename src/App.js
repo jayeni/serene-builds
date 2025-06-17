@@ -16,8 +16,36 @@ import iseDayoV2 from './assets/ise_dayo/Ise_Dayo_v2.pdf';
 import iseDayoV3 from './assets/ise_dayo/Ise_Dayo_v3.pdf';
 import iseDayoV4 from './assets/ise_dayo/Ise_Dayo_v4.pdf';
 import iseDayoV5 from './assets/ise_dayo/Ise_Dayo_v5.pdf';
+import sb0 from './assets/sb/sb0.png';
+import sb1 from './assets/sb/sb1.png';
+import sb2 from './assets/sb/sb2.png';
+import sb3 from './assets/sb/sb3.png';
+import sb4 from './assets/sb/sb4.png';
+import sb6 from './assets/sb/sb6.png';
+import sb7 from './assets/sb/sb7.png';
+import sb8 from './assets/sb/sb8.png';
+import sb9 from './assets/sb/sb9.png';
+import sb10 from './assets/sb/sb10.png';
+import sb11 from './assets/sb/sb11.png';
+import sb12 from './assets/sb/sb12.png';
 
 const artifactsData = [
+      {
+        id: 101,
+        title: "PK Before Pictures",
+        type: "image",
+        project: "Serene Build",
+        tags: ["before", "photos", "pk"],
+        versions: [
+          {
+            version: "v1",
+            description: "Collection of before pictures showing the initial state of PK.",
+            images: [sb0, sb1, sb2, sb3, sb4, sb6, sb7, sb8, sb9, sb10, sb11, sb12],
+            file_url: sb1, // Preview image
+            created_at: "2025-05-01T10:00:00Z",
+          }
+        ]
+      },
       {
         id: 102,
         title: "3D Rhino Design Video",

@@ -8,8 +8,8 @@ function ArtifactPage({ artifacts }) {
   const navigate = useNavigate();
   
   const artifact = artifacts.find(a => a.id === parseInt(artifactId));
-
   const [currentVersion, setCurrentVersion] = useState(artifact ? artifact.versions[artifact.versions.length - 1] : null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   if (!artifact || !currentVersion) {
     return <div>Artifact not found.</div>;
@@ -18,12 +18,64 @@ function ArtifactPage({ artifacts }) {
   const handleVersionChange = (event) => {
     const selectedVersion = artifact.versions.find(v => v.version === event.target.value);
     setCurrentVersion(selectedVersion);
+    setSelectedImageIndex(0); // Reset image index when version changes
+  };
+
+  const handleImageClick = (index) => {
+    setSelectedImageIndex(index);
+  };
+
+  const handlePreviousImage = () => {
+    setSelectedImageIndex(prevIndex => 
+      prevIndex === 0 ? currentVersion.images.length - 1 : prevIndex - 1
+    );
+  };
+
+  const handleNextImage = () => {
+    setSelectedImageIndex(prevIndex => 
+      prevIndex === currentVersion.images.length - 1 ? 0 : prevIndex + 1
+    );
   };
 
   const ArtifactPreview = ({ artifact, version }) => {
     switch (artifact.type) {
       case 'image':
-        return <img src={version.file_url} alt={artifact.title} className="artifact-image-preview" />;
+        if (version.images && version.images.length > 1) {
+          return (
+            <div className="image-gallery">
+              <div className="main-image-container">
+                <button onClick={handlePreviousImage} className="gallery-arrow left-arrow">
+                  &#8249;
+                </button>
+                <img 
+                  src={version.images[selectedImageIndex]} 
+                  alt={`${artifact.title} - Image ${selectedImageIndex + 1}`} 
+                  className="main-image" 
+                />
+                <button onClick={handleNextImage} className="gallery-arrow right-arrow">
+                  &#8250;
+                </button>
+              </div>
+              <div className="thumbnail-container">
+                {version.images.map((image, index) => (
+                  <div 
+                    key={index} 
+                    className={`thumbnail ${index === selectedImageIndex ? 'selected' : ''}`}
+                    onClick={() => handleImageClick(index)}
+                  >
+                    <img 
+                      src={image} 
+                      alt={`Thumbnail ${index + 1}`} 
+                      className="thumbnail-image"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        } else {
+          return <img src={version.file_url} alt={artifact.title} className="artifact-image-preview" />;
+        }
       case 'video':
         return <video src={version.file_url} controls className="artifact-video-preview" />;
       case '3d':
