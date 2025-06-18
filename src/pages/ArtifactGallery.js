@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './ArtifactGallery.css';
 import ModelViewer from '../components/ModelViewer';
 
@@ -11,6 +11,7 @@ function ArtifactGallery({ artifacts }) {
   const [isProjectDropdownOpen, setProjectDropdownOpen] = useState(false);
   const [isTypeDropdownOpen, setTypeDropdownOpen] = useState(false);
   const [previewImageIndexes, setPreviewImageIndexes] = useState({});
+  const navigate = useNavigate();
   
   const videoRefs = useRef({});
 
@@ -186,10 +187,15 @@ function ArtifactGallery({ artifacts }) {
                 <option value="alpha-asc">Sort by Name (A-Z)</option>
               </select>
             </div>
-            <button className="add-artifact-button">
-              <span className="add-artifact-icon">+</span>
-              Add Artifact
-            </button>
+            <div className="action-buttons-container">
+              <button className="project-hierarchy-button" onClick={() => navigate('/hierarchy')}>
+                Project Hierarchy
+              </button>
+              <button className="add-artifact-button" onClick={() => navigate('/upload')}>
+                <span className="add-artifact-icon">+</span>
+                Add Artifact
+              </button>
+            </div>
           </div>
         </div>
 

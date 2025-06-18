@@ -1,0 +1,145 @@
+.upload-artifact-page {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px;
+  min-height: 100vh;
+}
+
+.upload-artifact-container {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 600px;
+  position: relative;
+}
+
+.back-button-upload {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: url('../assets/backbutton.png') no-repeat center center;
+  background-size: contain;
+  width: 40px;
+  height: 40px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.back-button-upload:hover {
+  transform: scale(1.1);
+}
+
+.upload-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.upload-form .form-group {
+  margin-bottom: 25px;
+}
+
+.upload-form label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.upload-form input[type="text"],
+.upload-form select,
+.upload-form textarea,
+.tag-input-container {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #333;
+  transition: border-color 0.2s;
+}
+
+.upload-form input[type="text"]:focus,
+.upload-form select:focus,
+.upload-form textarea:focus {
+  outline: none;
+  border-color: #E56020;
+}
+
+.tag-input-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.tag-input-container input {
+  flex-grow: 1;
+  border: none;
+  padding: 0;
+  outline: none;
+  font-size: 1rem;
+}
+
+.tag {
+  background-color: #eee;
+  padding: 5px 10px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.remove-tag {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #888;
+}
+
+.file-drop-area {
+  border: 2px dashed #ddd;
+  border-radius: 8px;
+  padding: 30px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.file-drop-area:hover {
+  border-color: #E56020;
+}
+
+.file-drop-icon {
+  font-size: 2.5rem;
+  color: #888;
+}
+
+.file-drop-area p {
+  margin: 10px 0 0;
+  color: #888;
+}
+
+.upload-button {
+  width: 100%;
+  padding: 15px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.upload-button:hover {
+  background-color: #E56020;
+} 

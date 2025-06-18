@@ -1,0 +1,95 @@
+.hierarchy-page {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px;
+  min-height: 100vh;
+}
+
+.hierarchy-container {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 800px;
+  position: relative;
+  font-family: 'Menlo', 'Monaco', monospace;
+}
+
+.back-button-hierarchy {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: url('../assets/backbutton.png') no-repeat center center;
+  background-size: contain;
+  width: 40px;
+  height: 40px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.back-button-hierarchy:hover {
+  transform: scale(1.1);
+}
+
+.hierarchy-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+.hierarchy-tree {
+  line-height: 1.8;
+}
+
+.project-node {
+  margin-bottom: 20px;
+}
+
+.project-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.type-nodes {
+  padding-left: 30px;
+  border-left: 2px solid #e0e0e0;
+}
+
+.type-node {
+  margin-top: 10px;
+}
+
+.type-name {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #555;
+}
+
+.artifact-list {
+  padding-left: 30px;
+  list-style: none;
+  border-left: 2px solid #e0e0e0;
+}
+
+.artifact-item {
+  margin-top: 5px;
+}
+
+.artifact-item a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.artifact-item a:hover {
+  text-decoration: underline;
+}
+
+.folder-icon {
+  margin-right: 10px;
+} 

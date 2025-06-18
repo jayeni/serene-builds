@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Layout from './components/Layout/Layout';
 import ArtifactGallery from './pages/ArtifactGallery';
 import ArtifactPage from './pages/ArtifactPage';
+import UploadArtifact from './pages/UploadArtifact';
+import ProjectHierarchy from './pages/ProjectHierarchy';
 import bodyBackgroundImage from './assets/green-back.png';
 import prayerHands from './assets/prayerhands.jpg';
 import sb3d1Video from './assets/sb3d1.mov';
@@ -165,6 +167,8 @@ function App() {
         <Routes>
           <Route path="/" element={<ArtifactGallery artifacts={artifacts} />} />
           <Route path="/artifact/:artifactId" element={<ArtifactPage artifacts={artifacts} />} />
+          <Route path="/upload" element={<UploadArtifact />} />
+          <Route path="/hierarchy" element={<ProjectHierarchy artifacts={artifacts} />} />
           {/* Catch-all route - redirects any invalid URL to home page */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

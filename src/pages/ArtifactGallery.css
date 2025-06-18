@@ -563,6 +563,12 @@
   transform: scale(1.05);
 }
 
+.action-buttons-container {
+  display: flex;
+  gap: 16px;
+  margin-left: auto;
+}
+
 .add-artifact-button {
   display: flex;
   align-items: center;
@@ -576,7 +582,6 @@
   font-weight: 500;
   color: #000;
   transition: all 0.2s ease;
-  margin-left: auto;
 }
 
 .add-artifact-button:hover {
@@ -587,6 +592,26 @@
 .add-artifact-icon {
   font-size: 1.5rem;
   line-height: 1;
+}
+
+.project-hierarchy-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #000;
+  transition: all 0.2s ease;
+}
+
+.project-hierarchy-button:hover {
+  background-color: #f0f0f0;
+  border-color: #555;
 }
 
 /* Preview Arrow Styles */
