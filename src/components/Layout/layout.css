@@ -48,7 +48,7 @@
     /* Header styles */
     .header {
       height: 60px;
-      background-image: url('../../assets/purp-back.png');
+      background-color: white;
       background-size: cover;
       background-position: center;
       color: #1F3D0C;
@@ -93,7 +93,7 @@
     /* Footer styles */
     .footer {
       height: 40px;
-      background-image: url('../../assets/purp-back.png');
+      background-color: white;
       background-size: cover;
       background-position: center;
       color: #1F3D0C;
@@ -111,9 +111,10 @@
     
     /* Content body styles */
     .content-body {
-      flex: 1;
+      flex-grow: 1;
       padding: 20px;
       overflow-y: auto;
+      background-color: white;
       box-sizing: border-box;
     }
     

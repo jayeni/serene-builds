@@ -20,13 +20,15 @@
   position: absolute;
   top: 20px;
   left: 20px;
-  background: url('../assets/backbutton.png') no-repeat center center;
+  background: url('../assets/left-arrow.png') no-repeat center center;
   background-size: contain;
   width: 40px;
   height: 40px;
   border: none;
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
+  display: block;
+  margin-bottom: 20px;
 }
 
 .back-button-upload:hover {

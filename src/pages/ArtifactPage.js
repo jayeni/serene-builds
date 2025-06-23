@@ -96,7 +96,10 @@ function ArtifactPage({ artifacts }) {
 
   return (
     <div className="artifact-page">
-      <button onClick={() => navigate(-1)} className="back-button"></button>
+      <button onClick={() => navigate(-1)} className="back-button-with-text">
+        <span className="back-arrow-icon"></span>
+        <span>Back</span>
+      </button>
       <div className="artifact-title-header">
         <h1 className="combined-bubble-text" data-text={`Artifact: ${artifact.title}`}>Artifact: {artifact.title}</h1>
       </div>

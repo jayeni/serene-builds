@@ -2,26 +2,57 @@
   max-width: 900px;
   margin: 0 auto;
   padding: 20px;
+  padding-top: 80px;
 }
 
-.back-button {
-  background: url('../assets/backbutton.png') no-repeat center center;
-  background-size: contain;
-  width: 80px;
-  height: 80px;
+.back-button-with-text {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
   border: none;
   cursor: pointer;
-  transition: transform 0.2s ease-in-out;
-  display: block;
-  margin-bottom: 20px;
+  padding: 0;
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 0px;
+  transition: color 0.2s ease-in-out;
 }
 
-.back-button:hover {
-  transform: scale(1.1);
+.back-button-with-text:hover,
+.back-button-with-text:active {
+  color: #E56020;
+  text-decoration: none;
+}
+
+.back-button-with-text:focus {
+  outline: none;
+}
+
+.back-button-with-text:hover .back-arrow-icon,
+.back-button-with-text:active .back-arrow-icon {
+  background-color: #E56020;
+}
+
+.back-arrow-icon {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  background-color: #333;
+  -webkit-mask-image: url('../assets/left-arrow.png');
+  mask-image: url('../assets/left-arrow.png');
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  transition: background-color 0.2s ease-in-out;
 }
 
 .artifact-title-header {
   text-align: center;
+  margin-top: -5px;
   margin-bottom: 20px;
   font-size: 1.8rem;
 }
@@ -104,9 +135,7 @@
   padding: 20px;
   font-size: 1.1rem;
   border-radius: 5px;
-  background-image: url('../assets/orange-back.png');
-  background-size: cover;
-  background-position: center;
+  background-color: white;
 }
 
 .artifact-tags-container {
@@ -127,6 +156,10 @@
 }
 
 @media (max-width: 768px) {
+  .artifact-page {
+    padding-top: 120px;
+  }
+
   .artifact-page .combined-bubble-text {
     font-size: 1.4rem;
     white-space: normal;

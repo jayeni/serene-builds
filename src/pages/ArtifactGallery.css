@@ -138,10 +138,10 @@
   background-color: #a38aa4;}
 
 .back-button {
-  background: url('../assets/backbutton.png') no-repeat center center;
+  background: url('../assets/left-arrow.png') no-repeat center center;
   background-size: contain;
-  width: 80px;
-  height: 80px;
+  width: 40px;
+  height: 40px;
   border: none;
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
@@ -572,13 +572,13 @@
 .add-artifact-button {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 12px 20px;
+  gap: 6px;
+  padding: 8px 16px;
   background-color: #fff;
   border: 1px solid #000;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 500;
   color: #000;
   transition: all 0.2s ease;
@@ -590,20 +590,20 @@
 }
 
 .add-artifact-icon {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   line-height: 1;
 }
 
 .project-hierarchy-button {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 12px 20px;
+  gap: 6px;
+  padding: 8px 16px;
   background-color: #fff;
   border: 1px solid #000;
   border-radius: 8px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 500;
   color: #000;
   transition: all 0.2s ease;
