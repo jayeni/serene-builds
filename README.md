@@ -22,4 +22,4 @@ Clone the repo and install dependencies:
 
 ```bash
 npm install
-''' 
+```
