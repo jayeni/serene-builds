@@ -1,186 +1,174 @@
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
-import Home from './pages/Home';
-import ProjectGallery from './pages/ProjectGallery';
-import Blog from './pages/BlogGallery';
-import Project from './pages/Project';
-import BlogPost from './pages/BlogPost';
-import Contact from './pages/Contact';
-import ReportBug from './pages/ReportBug';
-import ProjectEditor from './pages/ProjectEditor';
-import BlogEditor from './pages/BlogEditor';
-import { useState } from 'react';
+import ArtifactGallery from './pages/ArtifactGallery';
+import ArtifactPage from './pages/ArtifactPage';
+import UploadArtifact from './pages/UploadArtifact';
+import ProjectHierarchy from './pages/ProjectHierarchy';
+import bodyBackgroundImage from './assets/green-back.png';
 import prayerHands from './assets/prayerhands.jpg';
+import sb3d1Video from './assets/sb3d1.mov';
+import sb3d2Video from './assets/sb3d2.mov';
+import pkObj from './assets/pk.obj';
+import pkMtl from './assets/pk.mtl';
+import pk4Obj from './assets/pk4.obj';
+import pk4Mtl from './assets/pk4.mtl';
+import iseDayoV1 from './assets/ise_dayo/Ise_Dayo_v1.pdf';
+import iseDayoV2 from './assets/ise_dayo/Ise_Dayo_v2.pdf';
+import iseDayoV3 from './assets/ise_dayo/Ise_Dayo_v3.pdf';
+import iseDayoV4 from './assets/ise_dayo/Ise_Dayo_v4.pdf';
+import iseDayoV5 from './assets/ise_dayo/Ise_Dayo_v5.pdf';
+import sb0 from './assets/sb/sb0.png';
+import sb1 from './assets/sb/sb1.png';
+import sb2 from './assets/sb/sb2.png';
+import sb3 from './assets/sb/sb3.png';
+import sb4 from './assets/sb/sb4.png';
+import sb6 from './assets/sb/sb6.png';
+import sb7 from './assets/sb/sb7.png';
+import sb8 from './assets/sb/sb8.png';
+import sb9 from './assets/sb/sb9.png';
+import sb10 from './assets/sb/sb10.png';
+import sb11 from './assets/sb/sb11.png';
+import sb12 from './assets/sb/sb12.png';
+
+const artifactsData = [
+      {
+        id: 101,
+        title: "PK Before Pictures",
+        type: "image",
+        project: "Serene Build",
+        tags: ["before", "photos", "pk"],
+        versions: [
+          {
+            version: "v1",
+            description: "Collection of before pictures showing the initial state of PK.",
+            images: [sb0, sb1, sb2, sb3, sb4, sb6, sb7, sb8, sb9, sb10, sb11, sb12],
+            file_url: sb1, // Preview image
+            created_at: "2025-05-01T10:00:00Z",
+          }
+        ]
+      },
+      {
+        id: 102,
+        title: "3D Rhino Design Video",
+        type: "video",
+        project: "Serene Build",
+        tags: ["video", "graph", "preview"],
+        versions: [
+          {
+            version: "v1",
+            description: "A video of a 3D design that was made in Rhino.",
+            file_url: sb3d1Video,
+            created_at: "2025-05-02T11:00:00Z",
+          },
+          {
+            version: "v2",
+            description: "Version 1 of the 3D design video.",
+            file_url: sb3d2Video,
+            created_at: "2025-05-03T12:00:00Z",
+          }
+        ]
+      },
+      {
+        id: 103,
+        title: "3D Model PK",
+        type: "3d",
+        project: "Serene Build",
+        tags: ["3d", "model", "viewer"],
+        versions: [
+          {
+            version: "v1",
+            description: "Version 2 of the 3D model of PK.",
+            obj_url: pk4Obj,
+            mtl_url: pk4Mtl,
+            created_at: "2025-05-04T10:00:00Z",
+          },
+          {
+            version: "v2",
+            description: "3D model of PK.",
+            obj_url: pkObj,
+            mtl_url: pkMtl,
+            created_at: "2025-05-05T10:00:00Z",
+          }
+        ]
+      },
+      {
+        id: 104,
+        title: "Ise Dayo Document",
+        type: "pdf",
+        project: "Ise Dayo",
+        tags: ["pdf", "document", "viewer"],
+        versions: [
+          {
+            version: "v1",
+            description: "Version 1 of Ise Dayo document.",
+            file_url: iseDayoV1,
+            created_at: "2025-05-06T10:00:00Z",
+          },
+          {
+            version: "v2",
+            description: "Version 2 of Ise Dayo document.",
+            file_url: iseDayoV2,
+            created_at: "2025-05-07T10:00:00Z",
+          },
+          {
+            version: "v3",
+            description: "Version 3 of Ise Dayo document.",
+            file_url: iseDayoV3,
+            created_at: "2025-05-08T10:00:00Z",
+          },
+          {
+            version: "v4",
+            description: "Version 4 of Ise Dayo document.",
+            file_url: iseDayoV4,
+            created_at: "2025-05-09T10:00:00Z",
+          },
+          {
+            version: "v5",
+            description: "Version 5 of Ise Dayo document.",
+            file_url: iseDayoV5,
+            created_at: "2025-05-10T10:00:00Z",
+          }
+        ]
+      }
+];
+
+// Process artifacts to add latest version data to the top level for gallery view
+const processedArtifacts = artifactsData.map(artifact => {
+  const latestVersion = artifact.versions[artifact.versions.length - 1];
+  let preview = latestVersion.file_url;
+  if(artifact.type === '3d' || artifact.type === 'video'){
+    preview = null; // No preview image for 3d models or videos for now
+  }
+
+  return {
+      ...artifact,
+      ...latestVersion,
+      previewImage: preview
+  };
+});
 
 function App() {
   const [isSignedIn, setIsSignedIn] = useState(false);
   
-  // Move projects data to App level
-  const [projects, setProjects] = useState({
-    1: {
-      title: "Project One",
-      description: "Detailed description of Project One...",
-      images: [prayerHands, prayerHands, prayerHands]
-    },
-    2: {
-      title: "Project Two",
-      description: "Detailed description of Project Two...",
-      images: [prayerHands, prayerHands, prayerHands]
-    },
-    // ... other projects
-  });
+  const [artifacts, setArtifacts] = useState(processedArtifacts);
 
-  // Add blog posts state
-  const [blogPosts, setBlogPosts] = useState({
-    1: {
-      title: "First Blog Post",
-      category: "Updates",
-      date: "2024-03-20",
-      summary: "This is a summary of the first blog post...",
-      content: "Full content of the first blog post...",
-      image: prayerHands
-    },
-    2: {
-      title: "Second Blog Post",
-      category: "News",
-      date: "2024-03-21",
-      summary: "This is a summary of the second blog post...",
-      content: "Full content of the second blog post...",
-      image: prayerHands
-    }
-  });
-
-  const createProject = (id) => {
-    setProjects(prev => ({
-      ...prev,
-      [id]: {
-        title: "New Project",
-        description: "Add your project description here...",
-        images: []
-      }
-    }));
-  };
-
-  const updateProject = (id, updatedProject) => {
-    setProjects(prev => ({
-      ...prev,
-      [id]: updatedProject
-    }));
-  };
-
-  const deleteProject = (id) => {
-    setProjects(prev => {
-      const newProjects = { ...prev };
-      delete newProjects[id];
-      return newProjects;
-    });
-  };
-
-  // Add blog management functions
-  const createBlogPost = (id) => {
-    setBlogPosts(prev => ({
-      ...prev,
-      [id]: {
-        title: "New Blog Post",
-        category: "Draft",
-        date: new Date().toISOString().split('T')[0],
-        summary: "Add your blog summary here...",
-        content: "Add your blog content here...",
-        image: null
-      }
-    }));
-  };
-
-  const updateBlogPost = (id, updatedPost) => {
-    setBlogPosts(prev => ({
-      ...prev,
-      [id]: updatedPost
-    }));
-  };
-
-  const deleteBlogPost = (id) => {
-    setBlogPosts(prev => {
-      const newPosts = { ...prev };
-      delete newPosts[id];
-      return newPosts;
-    });
-  };
+  useEffect(() => {
+    document.body.style.backgroundImage = `url(${bodyBackgroundImage})`;
+    document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundPosition = 'center';
+    document.body.style.backgroundRepeat = 'no-repeat';
+    document.body.style.backgroundAttachment = 'fixed';
+  }, []);
 
   return (
     <Router>
       <Layout isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn}>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route 
-            path="/projects" 
-            element={
-              <ProjectGallery 
-                projects={projects} 
-                isSignedIn={isSignedIn} 
-              />
-            } 
-          />
-          <Route 
-            path="/project/:id" 
-            element={
-              <Project 
-                isSignedIn={isSignedIn} 
-                projects={projects} 
-                deleteProject={deleteProject} 
-              />
-            } 
-          />
-          <Route 
-            path="/blog" 
-            element={
-              <Blog 
-                blogPosts={blogPosts} 
-                isSignedIn={isSignedIn}
-              />
-            } 
-          />
-          <Route 
-            path="/blog/:id" 
-            element={
-              <BlogPost 
-                blogPosts={blogPosts}
-                isSignedIn={isSignedIn}
-                deleteBlogPost={deleteBlogPost}
-              />
-            } 
-          />
-          <Route 
-            path="/blog/:id/edit" 
-            element={
-              isSignedIn ? (
-                <BlogEditor 
-                  blogPosts={blogPosts}
-                  updateBlogPost={updateBlogPost}
-                  createBlogPost={createBlogPost}
-                />
-              ) : (
-                <Navigate to="/blog" replace />
-              )
-            } 
-          />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/report-bug" element={<ReportBug />} />
-          <Route 
-            path="/project/:id/edit" 
-            element={
-              isSignedIn ? (
-                <ProjectEditor 
-                  projects={projects} 
-                  updateProject={updateProject}
-                  createProject={createProject}
-                />
-              ) : (
-                <Navigate to="/projects" replace />
-              )
-            } 
-          />
-          {/* Add other routes as needed */}
-          
+          <Route path="/" element={<ArtifactGallery artifacts={artifacts} />} />
+          <Route path="/artifact/:artifactId" element={<ArtifactPage artifacts={artifacts} />} />
+          <Route path="/upload" element={<UploadArtifact />} />
+          <Route path="/hierarchy" element={<ProjectHierarchy artifacts={artifacts} />} />
           {/* Catch-all route - redirects any invalid URL to home page */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
